@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainLoginActivity"
+            android:name=".FirstScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NormalLoginActivity"
+            android:name=".LoginActivity"
             android:label="Normal Login"
+            android:parentActivityName=".FirstScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            >
 
         </activity>
 
