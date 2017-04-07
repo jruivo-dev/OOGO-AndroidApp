@@ -17,7 +17,7 @@ public class SignupTypeActivity extends AppCompatActivity {
         btnNormal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignupTypeActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SignupTypeActivity.this, SignupActivity.class);
                 intent.putExtra("userType", "normal");
                 startActivity(intent);
             }
@@ -27,7 +27,7 @@ public class SignupTypeActivity extends AppCompatActivity {
         btnProfessional.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignupTypeActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SignupTypeActivity.this, SignupActivity.class);
                 intent.putExtra("userType", "professional");
                 startActivity(intent);
             }

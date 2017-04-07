@@ -121,11 +121,11 @@
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/button_normal_register"
+            android:id="@+id/button_signup"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/buttonColor"
-            android:text="Register"
+            android:text="Sign up"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
