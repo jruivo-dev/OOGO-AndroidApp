@@ -5,7 +5,11 @@
     <color name="colorAccent">#59d58d</color>
     <color name="colortext">#100b20</color>
     <color name="colorhint">#a9aaac</color>
-    <color name="buttonColor">#689F38</color>
+
+
+    <color name="backgroundColor">#388E3C</color>
+    <color name="buttonColor">#1B5E20</color>
+    <color name="textColor">#F5F5F5</color>
 
 
 </resources>
