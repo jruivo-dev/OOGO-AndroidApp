@@ -1,16 +1,17 @@
 package com.jruivodev.oogo;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.kosalgeek.genasync12.AsyncResponse;
-import com.kosalgeek.genasync12.PostResponseAsyncTask;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -36,28 +37,6 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.text_login_password);
         Button btnLogin = (Button) findViewById(R.id.button_login);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String username = usernameEditText.getText().toString().trim();
-                String password = passwordEditText.getText().toString().trim();
-
-                postData.put("email", username);
-                postData.put("password", password);
-
-                PostResponseAsyncTask task1 = new PostResponseAsyncTask(LoginActivity.this, postData, new AsyncResponse() {
-                    @Override
-                    public void processFinish(String s) {
-                        Log.d(LOG, s);
-                        if (s.contains("success"))
-                            Toast.makeText(LoginActivity.this, "Success Login", Toast.LENGTH_LONG).show();
-                    }
-                });
-                task1.execute("http://10.0.3.2/2-login.php");
-            }
-        });
-
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +45,96 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = usernameEditText.getText().toString().trim();
+                String password = passwordEditText.getText().toString().trim();
+
+                new PostAsync().execute(username, password);
+            }
+        });
+
+    }
+
+    class PostAsync extends AsyncTask<String, String, JSONObject> {
+        JSONParser jsonParser = new JSONParser();
+
+        private ProgressDialog pDialog;
+
+        private static final String LOGIN_URL = "http://10.0.3.2/android/registar.php";
+
+        private static final String TAG_SUCCESS = "success";
+        private static final String TAG_MESSAGE = "message";
+
+
+        @Override
+        protected void onPreExecute() {
+            pDialog = new ProgressDialog(LoginActivity.this);
+            pDialog.setMessage("Attempting login...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... args) {
+
+            try {
+
+                HashMap<String, String> params = new HashMap<>();
+                params.put("username", args[0]);
+                params.put("password", args[1]);
+
+                Log.d("request", "starting");
+
+                JSONObject json = jsonParser.makeHttpRequest(
+                        LOGIN_URL, "POST", params);
+
+                Log.d("Create Response", json.toString());
+
+
+                if (json != null) {
+                    Log.d("JSON result", json.toString());
+                    return json;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        protected void onPostExecute(JSONObject json) {
+
+            int success = 0;
+            String message = "";
+
+            if (pDialog != null && pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
+
+            if (json != null) {
+
+
+                try {
+                    success = json.getInt(TAG_SUCCESS);
+                    message = json.getString(TAG_MESSAGE);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (success == 1) {
+
+                Log.d("Success!", message);
+            } else {
+//                Intent i = new Intent(MainActivity.this, SecondActivity.class);
+//                startActivity(i);
+                Log.d("Failure", message);
+            }
+        }
 
     }
 }
