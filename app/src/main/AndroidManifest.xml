@@ -50,6 +50,13 @@
 
         </activity>
 
+        <activity
+
+            android:name="com.jruivodev.oogo.OrderDisplayActivity"
+            android:label="Orders">
+
+        </activity>
+
 
     </application>
 
