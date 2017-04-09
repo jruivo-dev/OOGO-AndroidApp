@@ -3,8 +3,11 @@ package com.jruivodev.oogo;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,26 +22,28 @@ import java.util.HashMap;
  * Created by Jojih on 09/04/2017.
  */
 
-public class OrderDisplayActivity extends AppCompatActivity {
+public class AllOrdersFragment extends Fragment {
 
     private final String LOG = "MainActivity";
     private OrderAdapter mAdapter;
     private ArrayList<Order> orders = new ArrayList<>();
     private ListView listView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders);
 
-        listView = (ListView) findViewById(R.id.list_view);
-        mAdapter = new OrderAdapter(this, new ArrayList<Order>());
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_orders, container, false);
+
+        listView = (ListView) rootView.findViewById(R.id.list_view);
+        mAdapter = new OrderAdapter(getContext(), new ArrayList<Order>());
         listView.setAdapter(mAdapter);
 
         new GetAsync().execute();
 
 
+        return rootView;
     }
+
 
     private class GetAsync extends AsyncTask<String, String, JSONObject> {
 
@@ -53,7 +58,7 @@ public class OrderDisplayActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            pDialog = new ProgressDialog(OrderDisplayActivity.this);
+            pDialog = new ProgressDialog(getContext());
             pDialog.setMessage("Loading orders...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -66,8 +71,6 @@ public class OrderDisplayActivity extends AppCompatActivity {
             try {
 
                 HashMap<String, String> params = new HashMap<>();
-//                params.put("name", args[0]);
-//                params.put("password", args[1]);
 
                 Log.d("ORDER DISPLAY ACTIVITY", "starting");
 
@@ -85,7 +88,8 @@ public class OrderDisplayActivity extends AppCompatActivity {
                         String description = currentOrder.getString("description");
                         String price = currentOrder.getString("price");
 
-                        orders.add(new Order(title, description));
+
+                        orders.add(new Order(title, description, "", price));
 
 
                     }
@@ -112,7 +116,7 @@ public class OrderDisplayActivity extends AppCompatActivity {
             }
 
             if (json != null) {
-                Toast.makeText(OrderDisplayActivity.this, json.toString(),
+                Toast.makeText(getContext(), json.toString(),
                         Toast.LENGTH_LONG).show();
 
                 try {

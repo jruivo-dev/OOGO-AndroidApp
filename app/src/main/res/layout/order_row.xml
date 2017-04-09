@@ -1,71 +1,140 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+
+    android:layout_height="110dp"
     android:background="#E8F5E9"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.8"
-        android:orientation="vertical">
+    android:orientation="vertical">
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:src="@drawable/professional"
-            app:civ_border_color="#FF000000"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
 
-            app:civ_border_width="1dp" />
+        android:orientation="horizontal">
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/order_title"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:textStyle="bold"
-            tools:text="This is just a title" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/order_description"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/order_category"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                fancy:fb_borderColor="#88898c"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="@color/backgroundColor"
+                fancy:fb_focusColor="#424243"
+                fancy:fb_radius="4dp"
+                fancy:fb_text="Electricista"
+                fancy:fb_textColor="#dfe0d9"
+                fancy:fb_textSize="12sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:src="@drawable/professional"
+                app:civ_border_color="#FF000000"
+
+                app:civ_border_width="1dp" />
+
+
+        </RelativeLayout>
+
+        <!--<View-->
+        <!--android:layout_width="0.1dp"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:layout_marginRight="4dp"-->
+        <!--android:background="@android:color/darker_gray" />-->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="2"
-            android:maxLines="4"
-            tools:text="This is just a normal textddddd\nMore words \nMore few words" />
+            android:orientation="vertical"
+            android:paddingLeft="8dp">
+
+
+            <TextView
+                android:id="@+id/order_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                tools:text="This is just a title" />
+
+
+            <TextView
+                android:id="@+id/order_description"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:maxLines="4"
+                tools:text="This is just a normal textdddssdd\nMore words \nMore few words" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6">
+
+            <!--<View-->
+            <!--android:layout_width="0.1dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_marginLeft="4dp"-->
+            <!--android:background="@android:color/darker_gray" />-->
+
+            <TextView
+                android:id="@+id/order_price"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16sp"
+                tools:text="202.22€" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.8"
-        android:gravity="center">
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:gravity="center">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="32sp"
-            tools:text="€20" />
-    </LinearLayout>
+    <!--<mehdi.sakout.fancybuttons.FancyButton-->
+    <!--android:id="@+id/btn_spotify_follow"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:paddingBottom="5dp"-->
+    <!--android:paddingLeft="20dp"-->
+    <!--android:paddingRight="20dp"-->
+    <!--android:paddingTop="5dp"-->
+    <!--fancy:fb_borderColor="#88898c"-->
+    <!--fancy:fb_borderWidth="1dp"-->
+    <!--fancy:fb_defaultColor="@color/buttonColor"-->
+    <!--fancy:fb_focusColor="#424243"-->
+    <!--fancy:fb_radius="30dp"-->
+    <!--fancy:fb_text="Check"-->
+    <!--fancy:fb_textColor="#dfe0d9" />-->
+    <!--</LinearLayout>-->
 
 
 </LinearLayout>
-

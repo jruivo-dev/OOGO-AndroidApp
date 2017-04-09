@@ -128,7 +128,8 @@ public class LoginActivity extends AppCompatActivity {
 
             if (success == 1) {
                 Log.d("Success!", message);
-                Intent i = new Intent(LoginActivity.this, OrderDisplayActivity.class);
+//                Intent i = new Intent(LoginActivity.this, AllOrdersFragment.class);
+                Intent i = new Intent(LoginActivity.this, MainScreen.class);
                 startActivity(i);
             } else {
                 Toast.makeText(LoginActivity.this, "Failed to", Toast.LENGTH_LONG).show();

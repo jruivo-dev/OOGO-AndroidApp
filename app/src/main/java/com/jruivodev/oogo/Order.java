@@ -5,11 +5,13 @@ package com.jruivodev.oogo;
  */
 
 public class Order {
-    private String mTitle, mDescription, mCategory;
+    private String mTitle, mDescription, mCategory, mPrice;
 
-    public Order(String mTitle, String mDescription) {
+    public Order(String mTitle, String mDescription, String mCategory, String mPrice) {
         this.mTitle = mTitle;
         this.mDescription = mDescription;
+        this.mCategory = mCategory;
+        this.mPrice = mPrice;
     }
 
     public String getTitle() {
@@ -22,5 +24,9 @@ public class Order {
 
     public String getCategory() {
         return mCategory;
+    }
+
+    public String getPrice() {
+        return mPrice;
     }
 }

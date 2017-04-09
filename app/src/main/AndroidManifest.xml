@@ -50,10 +50,18 @@
 
         </activity>
 
+
         <activity
 
-            android:name="com.jruivodev.oogo.OrderDisplayActivity"
+            android:name="com.jruivodev.oogo.AllOrdersFragment"
             android:label="Orders">
+
+        </activity>
+
+        <activity
+
+            android:name="com.jruivodev.oogo.MainScreen"
+            android:label="Main Screen">
 
         </activity>
 
