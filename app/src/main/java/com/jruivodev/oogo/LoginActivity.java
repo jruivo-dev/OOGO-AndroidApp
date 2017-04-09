@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
         private ProgressDialog pDialog;
 
-        private static final String LOGIN_URL = "http://10.0.3.2/android/registar.php";
+        private static final String LOGIN_URL = "http://10.0.3.2/android/login.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
@@ -87,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                 params.put("password", args[1]);
 
                 Log.d("request", "starting");
+                Log.d("PARAMS", params.toString());
 
                 JSONObject json = jsonParser.makeHttpRequest(
                         LOGIN_URL, "POST", params);
@@ -116,8 +118,6 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             if (json != null) {
-
-
                 try {
                     success = json.getInt(TAG_SUCCESS);
                     message = json.getString(TAG_MESSAGE);
@@ -127,9 +127,11 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             if (success == 1) {
-
+                Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
                 Log.d("Success!", message);
             } else {
+                Toast.makeText(LoginActivity.this, "Failed to", Toast.LENGTH_LONG).show();
+
 //                Intent i = new Intent(MainActivity.this, SecondActivity.class);
 //                startActivity(i);
                 Log.d("Failure", message);
