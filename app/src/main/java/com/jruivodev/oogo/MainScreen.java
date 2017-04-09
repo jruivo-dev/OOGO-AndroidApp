@@ -4,6 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 
+import com.jruivodev.oogo.fragments.AccountFragment;
+import com.jruivodev.oogo.fragments.AllOrdersFragment;
+import com.jruivodev.oogo.fragments.MyOrdersFragment;
+import com.jruivodev.oogo.fragments.NewOrderFragment;
+import com.jruivodev.oogo.fragments.SubmittedOrdersFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
@@ -19,29 +24,32 @@ public class MainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
+
+
         mBottomBar = BottomBar.attach(this, savedInstanceState);
+        mBottomBar.noResizeGoodness();
         mBottomBar.setItemsFromMenu(R.menu.menu_bottom, new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 switch (menuItemId) {
-                    case R.id.item1:
+                    case R.id.item1_all_orders:
                         AllOrdersFragment orderDisplayActivity = new AllOrdersFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, orderDisplayActivity).commit();
                         break;
 
-                    case R.id.item2:
+                    case R.id.item2_my_orders:
                         MyOrdersFragment myOrdersFragment = new MyOrdersFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, myOrdersFragment).commit();
                         break;
-                    case R.id.item3:
+                    case R.id.item3_new_order:
                         NewOrderFragment newOrderFragment = new NewOrderFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, newOrderFragment).commit();
                         break;
-                    case R.id.item4:
+                    case R.id.item4_map:
                         SubmittedOrdersFragment submittedOrdersFragment = new SubmittedOrdersFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, submittedOrdersFragment).commit();
                         break;
-                    case R.id.item5:
+                    case R.id.item5_my_account:
                         AccountFragment accountFragment = new AccountFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, accountFragment).commit();
                         break;

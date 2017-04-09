@@ -1,4 +1,4 @@
-package com.jruivodev.oogo;
+package com.jruivodev.oogo.fragments;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -9,7 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.Order;
+import com.jruivodev.oogo.OrderAdapter;
+import com.jruivodev.oogo.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +36,7 @@ public class AllOrdersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_orders, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_all_orders, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.list_view);
         mAdapter = new OrderAdapter(getContext(), new ArrayList<Order>());
@@ -116,8 +120,8 @@ public class AllOrdersFragment extends Fragment {
             }
 
             if (json != null) {
-                Toast.makeText(getContext(), json.toString(),
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), json.toString(),
+//                        Toast.LENGTH_LONG).show();
 
                 try {
                     success = json.getInt(TAG_SUCCESS);

@@ -2,36 +2,36 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/item1"
+        android:id="@+id/item1_all_orders"
         android:icon="@drawable/icon_menu"
-        android:title="people">
+        android:title="Orders">
 
     </item>
     <item
-        android:id="@+id/item2"
-        android:icon="@drawable/icon_menu"
-        android:title="food">
-
-    </item>
-
-    <item
-        android:id="@+id/item3"
-        android:icon="@drawable/icon_menu"
-        android:title="colors">
+        android:id="@+id/item2_my_orders"
+        android:icon="@drawable/book_open"
+        android:title="My Orders">
 
     </item>
 
     <item
-        android:id="@+id/item4"
-        android:icon="@drawable/icon_menu"
-        android:title="lel">
+        android:id="@+id/item3_new_order"
+        android:icon="@drawable/plus"
+        android:title="New Order">
 
     </item>
 
     <item
-        android:id="@+id/item5"
-        android:icon="@drawable/icon_menu"
-        android:title="!!!">
+        android:id="@+id/item4_map"
+        android:icon="@drawable/google_maps"
+        android:title="Map">
+
+    </item>
+
+    <item
+        android:id="@+id/item5_my_account"
+        android:icon="@drawable/account"
+        android:title="My Account">
 
     </item>
 </menu>
