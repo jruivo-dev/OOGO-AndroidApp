@@ -23,22 +23,19 @@
             android:orientation="vertical">
 
 
-            <mehdi.sakout.fancybuttons.FancyButton
+            <TextView
                 android:id="@+id/order_category"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:background="@color/backgroundColor"
+                android:gravity="center"
                 android:paddingBottom="5dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="2dp"
                 android:paddingTop="5dp"
-                fancy:fb_borderColor="#88898c"
-                fancy:fb_borderWidth="1dp"
-                fancy:fb_defaultColor="@color/backgroundColor"
-                fancy:fb_focusColor="#424243"
-                fancy:fb_radius="4dp"
-                fancy:fb_text="Electricista"
-                fancy:fb_textColor="#dfe0d9"
-                fancy:fb_textSize="12sp" />
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                tools:text="Entretenimento" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"

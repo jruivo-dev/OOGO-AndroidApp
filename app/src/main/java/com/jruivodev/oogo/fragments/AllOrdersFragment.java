@@ -91,10 +91,11 @@ public class AllOrdersFragment extends Fragment {
                         JSONObject currentOrder = ordersArray.getJSONObject(i);
                         String title = currentOrder.getString("title");
                         String description = currentOrder.getString("description");
+                        String category = currentOrder.getString("category");
                         String price = currentOrder.getString("price");
 
 
-                        orders.add(new Order(title, description, "", price));
+                        orders.add(new Order(title, description, category, price));
 
 
                     }
