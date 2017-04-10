@@ -20,19 +20,7 @@ import com.jruivodev.oogo.R;
  */
 
 public class OrdersLocationFragment extends Fragment implements OnMapReadyCallback {
-    //    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        View rootView = inflater.inflate(R.layout.fragment_orders_location, container, false);
-//
-//        FragmentManager childFragMan = getChildFragmentManager();
-//        FragmentTransaction childFragTrans = childFragMan.beginTransaction();
-//        MapsFragment fragB = new MapsFragment();
-//        childFragTrans.add(R.id.fragment_placeholder, fragB);
-//        childFragTrans.addToBackStack("B");
-//        childFragTrans.commit();
-//
-//        return rootView;
-//    }
+
 
     private GoogleMap mMap;
 

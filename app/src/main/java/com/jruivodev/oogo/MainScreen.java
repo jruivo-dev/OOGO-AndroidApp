@@ -18,7 +18,7 @@ import com.roughike.bottombar.OnMenuTabClickListener;
 
 public class MainScreen extends AppCompatActivity {
 
-    BottomBar mBottomBar;
+    private BottomBar mBottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class MainScreen extends AppCompatActivity {
         mBottomBar.setItemsFromMenu(R.menu.menu_bottom, new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
+
                 switch (menuItemId) {
                     case R.id.item1_all_orders:
                         AllOrdersFragment orderDisplayActivity = new AllOrdersFragment();
