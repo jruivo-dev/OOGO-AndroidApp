@@ -38,7 +38,7 @@ public class AllOrdersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_all_orders, container, false);
 
-        listView = (ListView) rootView.findViewById(R.id.list_view);
+        listView = (ListView) rootView.findViewById(R.id.list_view_all_orders);
         mAdapter = new OrderAdapter(getContext(), new ArrayList<Order>());
         listView.setAdapter(mAdapter);
 
@@ -55,8 +55,8 @@ public class AllOrdersFragment extends Fragment {
 
         private ProgressDialog pDialog;
 
-        //        private static final String LOGIN_URL = "http://10.0.3.2/android/get_all_orders.php";
-        private static final String LOGIN_URL = "http://192.168.1.108/android/get_all_orders.php";
+        private static final String LOGIN_URL = "http://10.0.3.2/android/get_all_orders.php";
+//        private static final String LOGIN_URL = "http://192.168.1.108/android/get_my_orders.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";

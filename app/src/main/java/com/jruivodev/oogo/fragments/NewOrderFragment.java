@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.jruivodev.oogo.Category;
 import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.LoginActivity;
 import com.jruivodev.oogo.MainScreen;
 import com.jruivodev.oogo.R;
 
@@ -66,7 +67,7 @@ public class NewOrderFragment extends Fragment {
                         categoryId = c.getId();
                 }
 
-                new PostAsync().execute(mTitle, mDescription, mPrice, categoryId);
+                new PostAsync().execute(mTitle, mDescription, mPrice, categoryId, LoginActivity.getUserId());
             }
         });
 
@@ -103,6 +104,7 @@ public class NewOrderFragment extends Fragment {
                 params.put("description", args[1]);
                 params.put("price", args[2]);
                 params.put("category", args[3]);
+                params.put("userID", args[4]);
 
                 Log.d("request", "starting");
 

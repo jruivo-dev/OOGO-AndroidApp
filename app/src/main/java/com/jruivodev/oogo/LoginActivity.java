@@ -25,6 +25,11 @@ public class LoginActivity extends AppCompatActivity {
     private final String LOG = "MainActivity";
     private HashMap postData = new HashMap();
     private EditText usernameEditText, passwordEditText;
+    private static String USER_ID = "";
+
+    public static String getUserId() {
+        return USER_ID;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (json != null) {
                     Log.d("JSON result", json.toString());
+                    USER_ID = json.getString("uid");
                     return json;
                 }
 
@@ -128,8 +134,8 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             if (success == 1) {
+
                 Log.d("Success!", message);
-//                Intent i = new Intent(LoginActivity.this, AllOrdersFragment.class);
                 Intent i = new Intent(LoginActivity.this, MainScreen.class);
                 startActivity(i);
             } else {
