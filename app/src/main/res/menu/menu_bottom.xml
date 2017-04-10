@@ -31,7 +31,7 @@
     <item
         android:id="@+id/item5_my_account"
         android:icon="@drawable/account"
-        android:title="My Account">
+        android:title="Account">
 
     </item>
 </menu>

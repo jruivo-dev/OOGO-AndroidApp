@@ -8,7 +8,7 @@ import com.jruivodev.oogo.fragments.AccountFragment;
 import com.jruivodev.oogo.fragments.AllOrdersFragment;
 import com.jruivodev.oogo.fragments.MyOrdersFragment;
 import com.jruivodev.oogo.fragments.NewOrderFragment;
-import com.jruivodev.oogo.fragments.SubmittedOrdersFragment;
+import com.jruivodev.oogo.fragments.OrdersLocationFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
@@ -46,9 +46,10 @@ public class MainScreen extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, newOrderFragment).commit();
                         break;
                     case R.id.item4_map:
-                        SubmittedOrdersFragment submittedOrdersFragment = new SubmittedOrdersFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, submittedOrdersFragment).commit();
+                        OrdersLocationFragment ordersLocationFragment = new OrdersLocationFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, ordersLocationFragment).commit();
                         break;
+
                     case R.id.item5_my_account:
                         AccountFragment accountFragment = new AccountFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, accountFragment).commit();
