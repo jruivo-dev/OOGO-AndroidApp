@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.LoginActivity;
 import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.OrderAdapter;
 import com.jruivodev.oogo.R;
@@ -39,12 +40,8 @@ public class AllOrdersFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_all_orders, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.list_view_all_orders);
-        mAdapter = new OrderAdapter(getContext(), new ArrayList<Order>());
-        listView.setAdapter(mAdapter);
-
-        new GetAsync().execute();
-
-
+        mAdapter = new OrderAdapter(getContext(), orders);
+        new GetAsync().execute(LoginActivity.getUserId());
         return rootView;
     }
 
@@ -56,7 +53,7 @@ public class AllOrdersFragment extends Fragment {
         private ProgressDialog pDialog;
 
         private static final String LOGIN_URL = "http://10.0.3.2/android/get_all_orders.php";
-//        private static final String LOGIN_URL = "http://192.168.1.108/android/get_my_orders.php";
+//      private static final String LOGIN_URL = "http://192.168.1.108/android/get_my_orders.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
@@ -76,29 +73,16 @@ public class AllOrdersFragment extends Fragment {
             try {
 
                 HashMap<String, String> params = new HashMap<>();
+                params.put("userID", args[0]);
 
                 Log.d("ORDER DISPLAY ACTIVITY", "starting");
 
                 JSONObject json = jsonParser.makeHttpRequest(
-                        LOGIN_URL, "GET", params);
+                        LOGIN_URL, "POST", params);
 
                 if (json != null) {
                     Log.d("JSON result", json.toString());
-                    orders.clear();
 
-                    JSONArray ordersArray = json.getJSONArray("orders");
-                    for (int i = 0; i < ordersArray.length(); i++) {
-                        JSONObject currentOrder = ordersArray.getJSONObject(i);
-                        String title = currentOrder.getString("title");
-                        String description = currentOrder.getString("description");
-                        String category = currentOrder.getString("category");
-                        String price = currentOrder.getString("price");
-
-
-                        orders.add(new Order(title, description, category, price));
-
-
-                    }
                     return json;
                 }
 
@@ -125,7 +109,21 @@ public class AllOrdersFragment extends Fragment {
 //                Toast.makeText(getContext(), json.toString(),
 //                        Toast.LENGTH_LONG).show();
 
+
                 try {
+                    orders.clear();
+                    JSONArray ordersArray = json.getJSONArray("orders");
+                    for (int i = 0; i < ordersArray.length(); i++) {
+                        JSONObject currentOrder = ordersArray.getJSONObject(i);
+                        String title = currentOrder.getString("title");
+                        String description = currentOrder.getString("description");
+                        String category = currentOrder.getString("category");
+                        String price = currentOrder.getString("price");
+                        orders.add(new Order(title, description, category, price));
+                    }
+
+                    listView.setAdapter(mAdapter);
+
                     success = json.getInt(TAG_SUCCESS);
                     message = json.getString(TAG_MESSAGE);
                 } catch (JSONException e) {
