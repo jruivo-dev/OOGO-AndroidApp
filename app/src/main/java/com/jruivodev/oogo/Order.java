@@ -29,4 +29,9 @@ public class Order {
     public String getPrice() {
         return mPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Order Title:" + mTitle;
+    }
 }
