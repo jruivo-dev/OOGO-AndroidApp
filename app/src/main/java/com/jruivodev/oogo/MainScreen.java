@@ -38,10 +38,16 @@ public class MainScreen extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, orderDisplayActivity).commit();
                         break;
 
+//                    case R.id.item2_my_orders:
+//                        MySubmittedOrdersFragment mySubmittedOrdersFragment = new MySubmittedOrdersFragment();
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, mySubmittedOrdersFragment).commit();
+//                        break;
+
                     case R.id.item2_my_orders:
-                        MyOrdersFragment myOrdersFragment = new MyOrdersFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, myOrdersFragment).commit();
+                        MyOrdersFragment mySubmittedOrdersFragment = new MyOrdersFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, mySubmittedOrdersFragment).commit();
                         break;
+
                     case R.id.item3_new_order:
                         NewOrderFragment newOrderFragment = new NewOrderFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, newOrderFragment).commit();
