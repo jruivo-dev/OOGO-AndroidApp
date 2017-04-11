@@ -37,7 +37,6 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         TextView orderPrice = (TextView) listRow.findViewById(R.id.order_price);
         TextView orderCategory = (TextView) listRow.findViewById(R.id.order_category);
 
-
         orderTitle.setText(currentOrder.getTitle());
         orderDescription.setText(currentOrder.getDescription());
         orderPrice.setText(currentOrder.getPrice() + "€");
