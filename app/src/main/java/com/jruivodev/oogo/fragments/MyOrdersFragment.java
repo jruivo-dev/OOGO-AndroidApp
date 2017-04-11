@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gigamole.navigationtabstrip.NavigationTabStrip;
 import com.jruivodev.oogo.R;
 
 /**
@@ -22,9 +23,13 @@ public class MyOrdersFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_my_orders, container, false);
 
         ViewPager viewPager = (ViewPager) root.findViewById(R.id.viewpager_my_orders);
+        NavigationTabStrip mTopNavigationTabStrip = (NavigationTabStrip) root.findViewById(R.id.nts_top);
+
+
         /** Important: Must use the child FragmentManager or you will see side effects. */
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
 
+        mTopNavigationTabStrip.setViewPager(viewPager, 0);
         return root;
     }
 
@@ -46,11 +51,9 @@ public class MyOrdersFragment extends Fragment {
                 return new LikedOrdersFragment();
         }
 
-
         @Override
         public CharSequence getPageTitle(int position) {
             return "Child Fragment " + position;
         }
-
     }
 }

@@ -13,15 +13,9 @@ import com.jruivodev.oogo.R;
  */
 
 public class LikedOrdersFragment extends Fragment {
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View root = inflater.inflate(R.layout.fragment_liked_orders, container, false);
-
         return root;
     }
-
-
 }

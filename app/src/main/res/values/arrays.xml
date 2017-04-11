@@ -2,9 +2,8 @@
 <resources>
 
     <string-array name="titles">
-        <item>Nav</item>
-        <item>Tab</item>
-        <item>Strip</item>
+        <item>Submitted Orders</item>
+        <item>Liked Orders</item>
     </string-array>
 
 </resources>
