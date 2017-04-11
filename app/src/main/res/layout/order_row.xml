@@ -12,8 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-
+        android:layout_height="110dp"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -46,11 +45,20 @@
                 android:layout_height="60dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="18dp"
                 android:src="@drawable/professional"
                 app:civ_border_color="#FF000000"
-                app:civ_border_width="1dp" />
+                app:civ_border_width="0.09dp" />
 
+            <TextView
+                android:id="@+id/order_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:text="User Test"
+                android:textSize="9sp" />
 
         </RelativeLayout>
 
@@ -92,14 +100,29 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.6">
+            android:layout_weight="0.6"
+            android:orientation="vertical">
 
-            <!--<View-->
-            <!--android:layout_width="0.1dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:layout_marginLeft="4dp"-->
-            <!--android:background="@android:color/darker_gray" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.like.LikeButton
+                    android:id="@+id/star_button"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="8dp"
+                    app:icon_size="24dp"
+                    app:icon_type="heart" />
+
+                <ImageView
+                    android:id="@+id/contact_entry_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/share_variant" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/order_price"
@@ -109,31 +132,5 @@
                 android:textSize="16sp"
                 tools:text="202.22€" />
         </LinearLayout>
-
-
     </LinearLayout>
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:gravity="center">-->
-
-    <!--<mehdi.sakout.fancybuttons.FancyButton-->
-    <!--android:id="@+id/btn_spotify_follow"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:paddingBottom="5dp"-->
-    <!--android:paddingLeft="20dp"-->
-    <!--android:paddingRight="20dp"-->
-    <!--android:paddingTop="5dp"-->
-    <!--fancy:fb_borderColor="#88898c"-->
-    <!--fancy:fb_borderWidth="1dp"-->
-    <!--fancy:fb_defaultColor="@color/buttonColor"-->
-    <!--fancy:fb_focusColor="#424243"-->
-    <!--fancy:fb_radius="30dp"-->
-    <!--fancy:fb_text="Check"-->
-    <!--fancy:fb_textColor="#dfe0d9" />-->
-    <!--</LinearLayout>-->
-
-
 </LinearLayout>

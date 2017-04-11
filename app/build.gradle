@@ -41,5 +41,10 @@ dependencies {
     compile 'com.airbnb.android:airmapview:1.4.0'
     compile 'com.github.medyo:fancybuttons:1.8.3'
     compile 'com.google.android.gms:play-services-maps:10.2.1'
+
+    //like button
+    compile 'com.github.jd-alexander:LikeButton:0.2.0'
+
+
     testCompile 'junit:junit:4.12'
 }
