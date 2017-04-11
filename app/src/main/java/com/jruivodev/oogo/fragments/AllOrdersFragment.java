@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.jruivodev.oogo.JSONParser;
-import com.jruivodev.oogo.LoginActivity;
+import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.OrderAdapter;
 import com.jruivodev.oogo.R;

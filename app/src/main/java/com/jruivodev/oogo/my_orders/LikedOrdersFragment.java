@@ -1,4 +1,4 @@
-package com.jruivodev.oogo.fragments;
+package com.jruivodev.oogo.my_orders;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

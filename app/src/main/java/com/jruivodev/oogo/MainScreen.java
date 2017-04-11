@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jruivodev.oogo.fragments.AccountFragment;
 import com.jruivodev.oogo.fragments.AllOrdersFragment;
-import com.jruivodev.oogo.fragments.MyOrdersFragment;
+import com.jruivodev.oogo.my_orders.MyOrdersFragment;
 import com.jruivodev.oogo.fragments.NewOrderFragment;
 import com.jruivodev.oogo.fragments.OrdersLocationFragment;
 import com.roughike.bottombar.BottomBar;

@@ -1,4 +1,4 @@
-package com.jruivodev.oogo;
+package com.jruivodev.oogo.login_and_signup;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +13,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.MainScreen;
+import com.jruivodev.oogo.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

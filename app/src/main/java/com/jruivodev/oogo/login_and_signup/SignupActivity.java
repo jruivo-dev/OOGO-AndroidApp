@@ -1,4 +1,4 @@
-package com.jruivodev.oogo;
+package com.jruivodev.oogo.login_and_signup;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.jruivodev.oogo.fragments;
+package com.jruivodev.oogo.my_orders;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.jruivodev.oogo.JSONParser;
-import com.jruivodev.oogo.LoginActivity;
+import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.OrderAdapter;
 import com.jruivodev.oogo.R;

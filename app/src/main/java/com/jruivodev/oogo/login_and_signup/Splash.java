@@ -1,4 +1,4 @@
-package com.jruivodev.oogo;
+package com.jruivodev.oogo.login_and_signup;
 
 /**
  * Created by Jojih on 07/04/2017.
@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.jruivodev.oogo.R;
 
 public class Splash extends Activity {
 

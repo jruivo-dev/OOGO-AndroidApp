@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.jruivodev.oogo.Category;
 import com.jruivodev.oogo.JSONParser;
-import com.jruivodev.oogo.LoginActivity;
+import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.MainScreen;
 import com.jruivodev.oogo.R;
 

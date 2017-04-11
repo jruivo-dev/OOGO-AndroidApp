@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Splash"
+            android:name=".login_and_signup.Splash"
             android:label="Splash Screen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -29,22 +29,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".login_and_signup.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
         <activity
-            android:name=".SignupTypeActivity"
+            android:name=".login_and_signup.SignupTypeActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName=".login_and_signup.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
         <activity
-            android:name=".SignupActivity"
+            android:name=".login_and_signup.SignupActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".SignupTypeActivity"
+            android:parentActivityName=".login_and_signup.SignupTypeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>

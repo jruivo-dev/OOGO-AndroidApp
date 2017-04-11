@@ -1,10 +1,12 @@
-package com.jruivodev.oogo;
+package com.jruivodev.oogo.login_and_signup;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import com.jruivodev.oogo.R;
 
 public class SignupTypeActivity extends AppCompatActivity {
 
