@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 
+import com.jruivodev.oogo.all_orders.MainAllOrdersPosted;
 import com.jruivodev.oogo.fragments.AccountFragment;
-import com.jruivodev.oogo.all_orders.AllOrdersFragment;
-import com.jruivodev.oogo.my_orders.MyOrdersFragment;
 import com.jruivodev.oogo.fragments.NewOrderFragment;
 import com.jruivodev.oogo.fragments.OrdersLocationFragment;
+import com.jruivodev.oogo.my_orders.MainMyOrdersFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
@@ -34,17 +34,12 @@ public class MainScreen extends AppCompatActivity {
 
                 switch (menuItemId) {
                     case R.id.item1_all_orders:
-                        AllOrdersFragment orderDisplayActivity = new AllOrdersFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, orderDisplayActivity).commit();
+                        MainAllOrdersPosted mainAllOrdersPosted = new MainAllOrdersPosted();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, mainAllOrdersPosted).commit();
                         break;
 
-//                    case R.id.item2_my_orders:
-//                        MySubmittedOrdersFragment mySubmittedOrdersFragment = new MySubmittedOrdersFragment();
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, mySubmittedOrdersFragment).commit();
-//                        break;
-
                     case R.id.item2_my_orders:
-                        MyOrdersFragment mySubmittedOrdersFragment = new MyOrdersFragment();
+                        MainMyOrdersFragment mySubmittedOrdersFragment = new MainMyOrdersFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, mySubmittedOrdersFragment).commit();
                         break;
 

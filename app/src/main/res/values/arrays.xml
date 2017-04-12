@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="titles">
+    <string-array name="array_my_orders">
         <item>Submitted Orders</item>
         <item>Liked Orders</item>
+    </string-array>
+
+    <string-array name="array_all_orders">
+        <item>Available Orders</item>
+        <item>Pending Orders</item>
     </string-array>
 
 </resources>

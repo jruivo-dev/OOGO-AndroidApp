@@ -28,7 +28,7 @@ import java.util.HashMap;
  * Created by Jojih on 09/04/2017.
  */
 
-public class AllOrdersFragment extends Fragment {
+public class PostedOrdersFragment extends Fragment {
 
     private final String LOG = "MainActivity";
     //    private OrderAdapter mAdapter;

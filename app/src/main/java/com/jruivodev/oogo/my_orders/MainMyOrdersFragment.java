@@ -16,14 +16,14 @@ import com.jruivodev.oogo.R;
  * Created by Jojih on 11/04/2017.
  */
 
-public class MyOrdersFragment extends Fragment {
+public class MainMyOrdersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_my_orders, container, false);
+        View root = inflater.inflate(R.layout.view_pager_my_orders, container, false);
 
         ViewPager viewPager = (ViewPager) root.findViewById(R.id.viewpager_my_orders);
-        NavigationTabStrip mTopNavigationTabStrip = (NavigationTabStrip) root.findViewById(R.id.nts_top);
+        NavigationTabStrip mTopNavigationTabStrip = (NavigationTabStrip) root.findViewById(R.id.nav_my_orders);
 
 
         /** Important: Must use the child FragmentManager or you will see side effects. */

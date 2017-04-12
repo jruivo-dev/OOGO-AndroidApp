@@ -1,4 +1,4 @@
-package com.jruivodev.oogo.fragments;
+package com.jruivodev.oogo.all_orders;
 
 import android.support.v4.app.Fragment;
 
@@ -12,7 +12,7 @@ public class PendingOrdersFragment extends Fragment {
 //    public View onCreateView(LayoutInflater inflater,
 //                             ViewGroup container,
 //                             Bundle savedInstanceState) {
-//        View result = inflater.inflate(R.layout.fragment_my_orders, container, false);
+//        View result = inflater.inflate(R.layout.view_pager_my_orders, container, false);
 //        ViewPager pager = (ViewPager) result.findViewById(R.id.pager);
 //
 //        pager.setAdapter(buildAdapter());
