@@ -8,13 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jruivodev.oogo.JSONParser;
-import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.Order;
-import com.jruivodev.oogo.OrderAdapter;
 import com.jruivodev.oogo.R;
+import com.jruivodev.oogo.all_orders.FoldingCellListAdapter;
+import com.jruivodev.oogo.login_and_signup.LoginActivity;
+import com.ramotion.foldingcell.FoldingCell;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,16 +32,29 @@ import java.util.HashMap;
 public class MySubmittedOrdersFragment extends Fragment {
 
     private final String LOG = "MainActivity";
-    private OrderAdapter mAdapter;
+    //    private OrderAdapter mAdapter;
+    private FoldingCellListAdapter mAdapter;
+
     private ArrayList<Order> orders = new ArrayList<>();
     private ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_submitted_orders, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_all_orders, container, false);
 
-        listView = (ListView) rootView.findViewById(R.id.list_view_my_orders);
-        mAdapter = new OrderAdapter(getContext(), orders);
+        listView = (ListView) rootView.findViewById(R.id.list_view_all_orders);
+        mAdapter = new FoldingCellListAdapter(getContext(), orders);
+
+        // set on click event listener to list view
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                // toggle clicked cell state
+                ((FoldingCell) view).toggle(false);
+                // register in adapter that state for selected cell is toggled
+                mAdapter.registerToggle(pos);
+            }
+        });
 
         new PostAsync().execute(LoginActivity.getUserId());
         return rootView;

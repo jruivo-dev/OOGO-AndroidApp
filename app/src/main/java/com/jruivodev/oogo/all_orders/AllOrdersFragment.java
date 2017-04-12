@@ -40,9 +40,9 @@ public class AllOrdersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.orders_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_all_orders, container, false);
 
-        listView = (ListView) rootView.findViewById(R.id.mainListView);
+        listView = (ListView) rootView.findViewById(R.id.list_view_all_orders);
 
 //        mAdapter = new OrderAdapter(getContext(), orders);
         mAdapter = new FoldingCellListAdapter(getContext(), orders);
@@ -57,6 +57,7 @@ public class AllOrdersFragment extends Fragment {
                 mAdapter.registerToggle(pos);
             }
         });
+
 
         new GetAsync().execute(LoginActivity.getUserId());
         return rootView;

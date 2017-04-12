@@ -1,93 +1,187 @@
 <com.ramotion.foldingcell.FoldingCell xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/folding_cell"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipChildren="false"
     android:clipToPadding="false">
 
+    <!--Content-->
     <FrameLayout
         android:id="@+id/cell_content_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_dark"
         android:visibility="gone">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroundColor"
-            android:orientation="vertical">
+            android:layout_height="450dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/recycler_shape">
+            <!--android:background="#E8F5E9"-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/unfold_order_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/backgroundColor"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/textColor"
+                    android:textSize="20sp"
+                    tools:text="Entreternimento" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/unfold_profile_image"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="18dp"
+                        android:src="@drawable/professional" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/unfold_profile_image"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User Test1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rating estrelas" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/unfold_share_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/share_variant" />
+
+                    <com.like.LikeButton
+                        android:id="@+id/unfold_star_button"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/unfold_share_button"
+                        app:icon_size="24dp"
+                        app:icon_type="heart" />
+
+                    <TextView
+                        android:id="@+id/txtStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/unfold_profile_image"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableLeft="@drawable/timer"
+                        android:gravity="center"
+                        android:text="Today: 15/04/17" />
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/unfold_order_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="Titulo Exemplo" />
+
+                    <TextView
+                        android:id="@+id/unfold_order_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="8"
+                        android:textSize="14sp"
+                        tools:text="Descricao de tudo o meu deus ddo ceu etcdsdsdssdsdsdd
+Descricao de tudo o meu deus ddo ceu etc
+Descricao de tudo o meu deus ddo ceu etc
+Descricao de tudo o meu deus ddo ceu etc
+Descricao de tudo o meu deus ddo " />
+
+                    <TextView
+                        android:id="@+id/unfold_order_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Reward:"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/unfold_order_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Location:"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/unfold_order_pictures"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Pictures:"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HELLO"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BYEEEEEEE"
-                android:textSize="24sp" />
-        </LinearLayout>
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/md_yellow_700"
+                android:text="Accept Order" />
+        </RelativeLayout>
     </FrameLayout>
     ​
+
+    <!--Title-->
 
     <FrameLayout
         android:id="@+id/cell_title_view"
@@ -139,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
                         android:layout_marginTop="2dp"
-                        android:background="@color/md_black_1000"
+                        android:background="@color/backgroundColor"
                         android:gravity="center"
                         android:paddingBottom="5dp"
                         android:paddingLeft="3dp"

@@ -1,15 +1,17 @@
 package com.jruivodev.oogo.all_orders;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.R;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.HashSet;
@@ -24,29 +26,36 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
     private View.OnClickListener defaultRequestBtnClickListener;
 
+    private FoldingCell cell;
+
     public FoldingCellListAdapter(Context context, List<Order> orders) {
         super(context, 0, orders);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, final ViewGroup parent) {
         // get item for selected view
         Order item = getItem(position);
         // if cell is exists - reuse it, if not - create the new one from resource
-        FoldingCell cell = (FoldingCell) convertView;
+        cell = (FoldingCell) convertView;
         ViewHolder viewHolder;
         if (cell == null) {
             viewHolder = new ViewHolder();
             LayoutInflater vi = LayoutInflater.from(getContext());
-            cell = (FoldingCell) vi.inflate(R.layout.all_orders_cell, parent, false);
+            cell = (FoldingCell) vi.inflate(R.layout.cell_all_orders, parent, false);
 
-            Order currentOrder = getItem(position);
-            Log.d("FOLDING ADAPTER", currentOrder.getTitle());
 
             viewHolder.orderTitle = (TextView) cell.findViewById(R.id.order_title);
             viewHolder.orderDescription = (TextView) cell.findViewById(R.id.order_description);
             viewHolder.orderPrice = (TextView) cell.findViewById(R.id.order_price);
             viewHolder.orderCategory = (TextView) cell.findViewById(R.id.order_category);
+
+            viewHolder.unfoldOrderTitle = (TextView) cell.findViewById(R.id.unfold_order_title);
+            viewHolder.unfoldOrderDescription = (TextView) cell.findViewById(R.id.unfold_order_description);
+            viewHolder.unfoldOrderPrice = (TextView) cell.findViewById(R.id.unfold_order_price);
+            viewHolder.unfoldOrderCategory = (TextView) cell.findViewById(R.id.unfold_order_category);
+
+
             cell.setTag(viewHolder);
 
         } else {
@@ -59,11 +68,40 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
             viewHolder = (ViewHolder) cell.getTag();
         }
 
+
         viewHolder.orderTitle.setText(item.getTitle());
         viewHolder.orderDescription.setText(item.getDescription());
         viewHolder.orderPrice.setText(item.getPrice() + "€");
         viewHolder.orderCategory.setText(item.getCategory());
 
+        viewHolder.unfoldOrderTitle.setText(item.getTitle());
+        viewHolder.unfoldOrderDescription.setText(item.getDescription());
+        viewHolder.unfoldOrderPrice.setText("Reward: " + item.getPrice() + "€");
+        viewHolder.unfoldOrderCategory.setText(item.getCategory());
+
+
+        LikeButton btnLike = (LikeButton) cell.findViewById(R.id.star_button);
+        btnLike.setOnLikeListener(new OnLikeListener() {
+            @Override
+            public void liked(LikeButton likeButton) {
+                Toast.makeText(getContext(), getItem(position) + "", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void unLiked(LikeButton likeButton) {
+
+            }
+        });
+
+        cell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // toggle clicked cell state
+                ((FoldingCell) v).toggle(false);
+                // register in adapter that state for selected cell is toggled
+                registerToggle(position);
+            }
+        });
 
         return cell;
     }
@@ -99,6 +137,10 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
         TextView orderDescription;
         TextView orderPrice;
         TextView orderCategory;
+        TextView unfoldOrderTitle;
+        TextView unfoldOrderDescription;
+        TextView unfoldOrderPrice;
+        TextView unfoldOrderCategory;
     }
 
 }
