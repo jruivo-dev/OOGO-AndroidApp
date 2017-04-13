@@ -123,9 +123,9 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
         btnSubmitApplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(cell.getContext(), "OrderID: " + getItem(position).getId() + "User ID:" + LoginActivity.getUserId(), Toast.LENGTH_SHORT).show();
                 new UpdateRequestOrderStatus().execute(getItem(position).getId(), LoginActivity.getUserId());
-
-                Toast.makeText(cell.getContext(), "Your application has been submitted!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(cell.getContext(), "Your application has been submitted!", Toast.LENGTH_SHORT).show();
                 btnSubmitApplication.setText(getContext().getText(R.string.button_pending));
 
             }
@@ -171,7 +171,15 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
     }
 
 
+//                @Override
+//              public int getPosition(Order item) {
+//                  return  POSITION_NONE;
+//
+//    }
+
+    // Used to update the status of the order.
     private class UpdateRequestOrderStatus extends AsyncTask<String, String, JSONObject> {
+
         JSONParser jsonParser = new JSONParser();
         private ProgressDialog pDialog;
         private static final String LOGIN_URL = "http://10.0.3.2/android/set_request_order.php";
@@ -193,11 +201,10 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("orderID", args[0]);
                 params.put("userID", args[1]);
-                Log.d("request", "starting");
-                JSONObject json = jsonParser.makeHttpRequest(
-                        LOGIN_URL, "POST", params);
+                Log.d("Setting pending status", "with params:" + params);
+                JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "POST", params);
                 if (json != null) {
-                    Log.d("JSON result", json.toString());
+                    Log.d("#SETTING JSON result", json.toString());
                     return json;
                 }
             } catch (Exception e) {
@@ -228,6 +235,8 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
             } else {
                 Log.d("Failure", message);
             }
+            cancel(true);
         }
+
     }
 }

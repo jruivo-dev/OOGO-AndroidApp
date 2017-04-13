@@ -16,6 +16,7 @@ import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.ramotion.foldingcell.FoldingCell;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +24,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static com.jruivodev.oogo.all_orders.PostedOrdersFragment.REFRESH_DELAY;
 
 /**
  * Created by Jojih on 11/04/2017.
@@ -34,13 +37,13 @@ public class PendingOrdersFragment extends Fragment {
 
     private ArrayList<Order> orders = new ArrayList<>();
     private ListView listView;
-
+    private PullToRefreshView mPullToRefreshView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_all_orders, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_pending_orders, container, false);
 
-        listView = (ListView) rootView.findViewById(R.id.list_view_all_orders);
+        listView = (ListView) rootView.findViewById(R.id.list_pending_orders);
 
 //        mAdapter = new OrderAdapter(getContext(), orders);
         mAdapter = new FoldingCellListAdapter(getContext(), orders);
@@ -55,10 +58,28 @@ public class PendingOrdersFragment extends Fragment {
                 mAdapter.registerToggle(pos);
             }
         });
-
-
+        setRefresher(rootView);
         new GetAsync().execute(LoginActivity.getUserId());
         return rootView;
+    }
+
+    private void setRefresher(View view) {
+        mPullToRefreshView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                        new GetAsync().execute(LoginActivity.getUserId());
+                        listView.destroyDrawingCache();
+                        listView.setVisibility(ListView.INVISIBLE);
+                        listView.setVisibility(ListView.VISIBLE);
+                    }
+                }, REFRESH_DELAY);
+            }
+        });
     }
 
     private class GetAsync extends AsyncTask<String, String, JSONObject> {
@@ -67,7 +88,7 @@ public class PendingOrdersFragment extends Fragment {
 
         private ProgressDialog pDialog;
 
-        private static final String LOGIN_URL = "http://10.0.3.2/android/get_pending_orders.php";
+        private static final String LOGIN_URL = "http://10.0.3.2/android/get_pending_requests.php";
 //      private static final String LOGIN_URL = "http://192.168.1.108/android/get_my_orders.php";
 
         private static final String TAG_SUCCESS = "success";
@@ -90,13 +111,14 @@ public class PendingOrdersFragment extends Fragment {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("userID", args[0]);
 
-                Log.d("ORDER DISPLAY ACTIVITY", "starting");
+                Log.d("PendingOrdersFragment", "starting");
 
-                JSONObject json = jsonParser.makeHttpRequest(
-                        LOGIN_URL, "POST", params);
+                JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "POST", params);
 
+                Log.d("PendingOrdersFrag JSON", json.toString());
                 if (json != null) {
                     Log.d("JSON result", json.toString());
+
 
                     return json;
                 }

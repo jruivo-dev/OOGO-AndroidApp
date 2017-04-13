@@ -16,6 +16,7 @@ import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.ramotion.foldingcell.FoldingCell;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +37,8 @@ public class PostedOrdersFragment extends Fragment {
 
     private ArrayList<Order> orders = new ArrayList<>();
     private ListView listView;
+    private PullToRefreshView mPullToRefreshView;
+    public static final int REFRESH_DELAY = 500;
 
 
     @Override
@@ -58,9 +61,30 @@ public class PostedOrdersFragment extends Fragment {
             }
         });
 
+        // Refresh page
+        setRefresher(rootView);
 
         new GetAsync().execute(LoginActivity.getUserId());
         return rootView;
+    }
+
+    private void setRefresher(View view) {
+        mPullToRefreshView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                        new GetAsync().execute(LoginActivity.getUserId());
+                        listView.destroyDrawingCache();
+                        listView.setVisibility(ListView.INVISIBLE);
+                        listView.setVisibility(ListView.VISIBLE);
+                    }
+                }, REFRESH_DELAY);
+            }
+        });
     }
 
 
@@ -93,13 +117,13 @@ public class PostedOrdersFragment extends Fragment {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("userID", args[0]);
 
-                Log.d("ORDER DISPLAY ACTIVITY", "starting");
+//                Log.d("ORDER DISPLAY ACTIVITY", "starting");
 
                 JSONObject json = jsonParser.makeHttpRequest(
                         LOGIN_URL, "POST", params);
 
                 if (json != null) {
-                    Log.d("JSON result", json.toString());
+//                    Log.d("JSON result", json.toString());
 
                     return json;
                 }
@@ -138,7 +162,7 @@ public class PostedOrdersFragment extends Fragment {
                         String description = currentOrder.getString("description");
                         String category = currentOrder.getString("category");
                         String price = currentOrder.getString("price");
-                        orders.add(new Order(id,title, description, category, price));
+                        orders.add(new Order(id, title, description, category, price));
                     }
 
                     listView.setAdapter(mAdapter);
