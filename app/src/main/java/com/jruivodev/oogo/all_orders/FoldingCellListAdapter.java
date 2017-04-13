@@ -1,19 +1,29 @@
 package com.jruivodev.oogo.all_orders;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.R;
+import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.ramotion.foldingcell.FoldingCell;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -93,6 +103,8 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
             }
         });
 
+        setListeners(position);
+
         cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +117,21 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
 
         return cell;
     }
+
+    private void setListeners(final int position) {
+        final Button btnSubmitApplication = (Button) cell.findViewById(R.id.button_submit_application);
+        btnSubmitApplication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new UpdateRequestOrderStatus().execute(getItem(position).getId(), LoginActivity.getUserId());
+
+                Toast.makeText(cell.getContext(), "Your application has been submitted!", Toast.LENGTH_SHORT).show();
+                btnSubmitApplication.setText(getContext().getText(R.string.button_pending));
+
+            }
+        });
+    }
+
 
     // simple methods for register cell state changes
 
@@ -123,13 +150,13 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
         unfoldedIndexes.add(position);
     }
 
-    public View.OnClickListener getDefaultRequestBtnClickListener() {
-        return defaultRequestBtnClickListener;
-    }
-
-    public void setDefaultRequestBtnClickListener(View.OnClickListener defaultRequestBtnClickListener) {
-        this.defaultRequestBtnClickListener = defaultRequestBtnClickListener;
-    }
+//    public View.OnClickListener getDefaultRequestBtnClickListener() {
+//        return defaultRequestBtnClickListener;
+//    }
+//
+//    public void setDefaultRequestBtnClickListener(View.OnClickListener defaultRequestBtnClickListener) {
+//        this.defaultRequestBtnClickListener = defaultRequestBtnClickListener;
+//    }
 
     // View lookup cache
     private static class ViewHolder {
@@ -143,4 +170,64 @@ public class FoldingCellListAdapter extends ArrayAdapter<Order> {
         TextView unfoldOrderCategory;
     }
 
+
+    private class UpdateRequestOrderStatus extends AsyncTask<String, String, JSONObject> {
+        JSONParser jsonParser = new JSONParser();
+        private ProgressDialog pDialog;
+        private static final String LOGIN_URL = "http://10.0.3.2/android/set_request_order.php";
+        private static final String TAG_SUCCESS = "success";
+        private static final String TAG_MESSAGE = "message";
+
+        @Override
+        protected void onPreExecute() {
+//            pDialog = new ProgressDialog(MainActivity.this);
+//            pDialog.setMessage("Attempting login...");
+//            pDialog.setIndeterminate(false);
+//            pDialog.setCancelable(true);
+//            pDialog.show();
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... args) {
+            try {
+                HashMap<String, String> params = new HashMap<>();
+                params.put("orderID", args[0]);
+                params.put("userID", args[1]);
+                Log.d("request", "starting");
+                JSONObject json = jsonParser.makeHttpRequest(
+                        LOGIN_URL, "POST", params);
+                if (json != null) {
+                    Log.d("JSON result", json.toString());
+                    return json;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onPostExecute(JSONObject json) {
+            int success = 0;
+            String message = "";
+            if (pDialog != null && pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
+            if (json != null) {
+//                Toast.makeText(MainActivity.this, json.toString(),
+//                        Toast.LENGTH_LONG).show();
+                try {
+                    success = json.getInt(TAG_SUCCESS);
+                    message = json.getString(TAG_MESSAGE);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (success == 1) {
+                Log.d("Success!", message);
+            } else {
+                Log.d("Failure", message);
+            }
+        }
+    }
 }

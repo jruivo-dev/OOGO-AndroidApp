@@ -133,11 +133,12 @@ public class PostedOrdersFragment extends Fragment {
                     JSONArray ordersArray = json.getJSONArray("orders");
                     for (int i = 0; i < ordersArray.length(); i++) {
                         JSONObject currentOrder = ordersArray.getJSONObject(i);
+                        String id = currentOrder.getString("id");
                         String title = currentOrder.getString("title");
                         String description = currentOrder.getString("description");
                         String category = currentOrder.getString("category");
                         String price = currentOrder.getString("price");
-                        orders.add(new Order(title, description, category, price));
+                        orders.add(new Order(id,title, description, category, price));
                     }
 
                     listView.setAdapter(mAdapter);

@@ -167,7 +167,7 @@ Descricao de tudo o meu deus ddo " />
             </LinearLayout>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button_submit_application"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -176,7 +176,7 @@ Descricao de tudo o meu deus ddo " />
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/md_yellow_700"
-                android:text="Accept Order" />
+                android:text="@string/submit_application" />
         </RelativeLayout>
     </FrameLayout>
     ​
