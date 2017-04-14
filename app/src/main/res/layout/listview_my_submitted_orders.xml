@@ -1,16 +1,48 @@
-<com.yalantis.phoenix.PullToRefreshView android:id="@+id/pull_to_refresh"
-    android:layout_height="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent">
 
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/list_view_my_submitted"
+    <com.yalantis.phoenix.PullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginTop="8dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10.0sp" />
-</com.yalantis.phoenix.PullToRefreshView>
+        android:layout_height="match_parent">
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/list_view_my_submitted"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="8dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp" />
+    </com.yalantis.phoenix.PullToRefreshView>
+
+    <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/layout_accepted_users"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:visibility="gone">-->
+
+        <!--<fragment-->
+            <!--android:id="@+id/users_accepted_fragment"-->
+            <!--android:name="com.jruivodev.oogo.my_orders.UsersAcceptedActivity"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_margin="24dp">-->
+
+            <!--<ListView xmlns:android="http://schemas.android.com/apk/res/android"-->
+                <!--android:id="@+id/listview_accepted_users"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginLeft="2dp"-->
+                <!--android:layout_marginRight="2dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:divider="@android:color/transparent"-->
+                <!--android:dividerHeight="10.0sp" />-->
+        <!--</fragment>-->
+    <!--</FrameLayout>-->
+
+
+</FrameLayout>
 

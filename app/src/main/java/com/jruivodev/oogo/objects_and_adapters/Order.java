@@ -1,4 +1,4 @@
-package com.jruivodev.oogo;
+package com.jruivodev.oogo.objects_and_adapters;
 
 /**
  * Created by Jojih on 09/04/2017.

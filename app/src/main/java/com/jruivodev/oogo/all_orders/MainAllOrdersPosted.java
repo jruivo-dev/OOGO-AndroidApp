@@ -26,22 +26,22 @@ public class MainAllOrdersPosted extends Fragment {
         ViewPager viewPager = (ViewPager) root.findViewById(R.id.viewpager_my_orders);
         NavigationTabStrip mTopNavigationTabStrip = (NavigationTabStrip) root.findViewById(R.id.nav_all_orders);
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-                Toast.makeText(getContext(), "aqui", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//                Toast.makeText(getContext(), "aqui", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//            }
+//        });
 
         /** Important: Must use the child FragmentManager or you will see side effects. */
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));

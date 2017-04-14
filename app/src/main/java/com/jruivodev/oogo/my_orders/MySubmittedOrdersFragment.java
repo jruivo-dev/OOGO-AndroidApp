@@ -12,10 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jruivodev.oogo.JSONParser;
-import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.all_orders.AllOrdersCellAdapter;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
+import com.jruivodev.oogo.objects_and_adapters.Order;
 import com.ramotion.foldingcell.FoldingCell;
 import com.yalantis.phoenix.PullToRefreshView;
 

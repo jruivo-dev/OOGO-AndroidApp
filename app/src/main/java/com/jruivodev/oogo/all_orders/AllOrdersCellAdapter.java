@@ -2,6 +2,7 @@ package com.jruivodev.oogo.all_orders;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,9 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jruivodev.oogo.JSONParser;
-import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
+import com.jruivodev.oogo.my_orders.UsersAcceptedActivity;
+import com.jruivodev.oogo.objects_and_adapters.Order;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.ramotion.foldingcell.FoldingCell;
@@ -38,6 +40,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
     private View.OnClickListener defaultRequestBtnClickListener;
     private FoldingCell cell;
     private Boolean isEditMode = false;
+    private Button btnViewUsers;
 
     public AllOrdersCellAdapter(Context context, List<Order> orders, Boolean isEditMode) {
         super(context, 0, orders);
@@ -143,6 +146,16 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
                 ((FoldingCell) v).toggle(false);
                 // register in adapter that state for selected cell is toggled
                 registerToggle(position);
+            }
+        });
+
+
+        btnViewUsers = (Button) cell.findViewById(R.id.button_view_users);
+        btnViewUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), UsersAcceptedActivity.class);
+                getContext().startActivity(i);
             }
         });
 
