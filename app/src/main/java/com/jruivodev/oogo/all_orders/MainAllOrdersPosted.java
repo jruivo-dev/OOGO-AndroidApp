@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
 import com.jruivodev.oogo.R;
@@ -33,6 +34,8 @@ public class MainAllOrdersPosted extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
+
+                Toast.makeText(getContext(), "aqui", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -65,6 +68,11 @@ public class MainAllOrdersPosted extends Fragment {
                 return new PendingOrdersFragment();
         }
 
+        @Override
+        public int getItemPosition(Object object) {
+            Toast.makeText(getContext(), "Test", Toast.LENGTH_SHORT).show();
+            return super.getItemPosition(POSITION_NONE);
+        }
 
         @Override
         public CharSequence getPageTitle(int position) {

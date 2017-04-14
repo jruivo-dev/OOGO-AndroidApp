@@ -14,9 +14,10 @@ import android.widget.ListView;
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.R;
-import com.jruivodev.oogo.all_orders.FoldingCellListAdapter;
+import com.jruivodev.oogo.all_orders.AllOrdersCellAdapter;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.ramotion.foldingcell.FoldingCell;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +25,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static com.jruivodev.oogo.all_orders.PostedOrdersFragment.REFRESH_DELAY;
 
 /**
  * Created by Jojih on 09/04/2017.
@@ -33,17 +36,19 @@ public class MySubmittedOrdersFragment extends Fragment {
 
     private final String LOG = "MainActivity";
     //    private OrderAdapter mAdapter;
-    private FoldingCellListAdapter mAdapter;
+    private AllOrdersCellAdapter mAdapter;
 
     private ArrayList<Order> orders = new ArrayList<>();
     private ListView listView;
+    private PullToRefreshView mPullToRefreshView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_all_orders, container, false);
+        View rootView = inflater.inflate(R.layout.listview_my_submitted_orders, container, false);
 
-        listView = (ListView) rootView.findViewById(R.id.list_view_all_orders);
-        mAdapter = new FoldingCellListAdapter(getContext(), orders);
+        listView = (ListView) rootView.findViewById(R.id.list_view_my_submitted);
+        mAdapter = new AllOrdersCellAdapter(getContext(), orders);
 
         // set on click event listener to list view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,9 +61,31 @@ public class MySubmittedOrdersFragment extends Fragment {
             }
         });
 
+        setRefresher(rootView);
+
         new PostAsync().execute(LoginActivity.getUserId());
         return rootView;
     }
+
+    private void setRefresher(View view) {
+        mPullToRefreshView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                        new PostAsync().execute(LoginActivity.getUserId());
+                        listView.destroyDrawingCache();
+                        listView.setVisibility(ListView.INVISIBLE);
+                        listView.setVisibility(ListView.VISIBLE);
+                    }
+                }, REFRESH_DELAY);
+            }
+        });
+    }
+
 
     class PostAsync extends AsyncTask<String, String, JSONObject> {
         JSONParser jsonParser = new JSONParser();

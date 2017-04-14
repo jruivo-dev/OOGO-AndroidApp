@@ -33,7 +33,7 @@ import static com.jruivodev.oogo.all_orders.PostedOrdersFragment.REFRESH_DELAY;
 
 public class PendingOrdersFragment extends Fragment {
     //    private OrderAdapter mAdapter;
-    private FoldingCellListAdapter mAdapter;
+    private AllOrdersCellAdapter mAdapter;
 
     private ArrayList<Order> orders = new ArrayList<>();
     private ListView listView;
@@ -41,12 +41,12 @@ public class PendingOrdersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_pending_orders, container, false);
+        View rootView = inflater.inflate(R.layout.listview_pending_orders, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.list_pending_orders);
 
 //        mAdapter = new OrderAdapter(getContext(), orders);
-        mAdapter = new FoldingCellListAdapter(getContext(), orders);
+        mAdapter = new AllOrdersCellAdapter(getContext(), orders);
 
         // set on click event listener to list view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

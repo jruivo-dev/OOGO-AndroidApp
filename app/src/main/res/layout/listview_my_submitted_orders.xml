@@ -1,10 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.yalantis.phoenix.PullToRefreshView android:id="@+id/pull_to_refresh"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/list_view_my_orders"
+        android:id="@+id/list_view_my_submitted"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="2dp"
@@ -12,5 +12,5 @@
         android:layout_marginTop="8dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp" />
+</com.yalantis.phoenix.PullToRefreshView>
 
-</RelativeLayout>

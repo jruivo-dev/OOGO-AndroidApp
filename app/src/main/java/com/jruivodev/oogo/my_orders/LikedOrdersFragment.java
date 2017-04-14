@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.jruivodev.oogo.Order;
 import com.jruivodev.oogo.R;
-import com.jruivodev.oogo.all_orders.FoldingCellListAdapter;
+import com.jruivodev.oogo.all_orders.AllOrdersCellAdapter;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 
 public class LikedOrdersFragment extends Fragment {
-    private FoldingCellListAdapter adapter;
+    private AllOrdersCellAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class LikedOrdersFragment extends Fragment {
         // prepare elements to display
         final ArrayList<Order> items = new ArrayList<>();
 
-        adapter = new FoldingCellListAdapter(root.getContext(), items);
+        adapter = new AllOrdersCellAdapter(root.getContext(), items);
         listView.setAdapter(adapter);
 
         // set on click event listener to list view

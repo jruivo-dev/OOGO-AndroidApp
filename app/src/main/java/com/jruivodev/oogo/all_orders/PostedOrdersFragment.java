@@ -33,7 +33,7 @@ public class PostedOrdersFragment extends Fragment {
 
     private final String LOG = "MainActivity";
     //    private OrderAdapter mAdapter;
-    private FoldingCellListAdapter mAdapter;
+    private AllOrdersCellAdapter mAdapter;
 
     private ArrayList<Order> orders = new ArrayList<>();
     private ListView listView;
@@ -43,12 +43,12 @@ public class PostedOrdersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_all_orders, container, false);
+        View rootView = inflater.inflate(R.layout.listview_all_orders, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.list_view_all_orders);
 
 //        mAdapter = new OrderAdapter(getContext(), orders);
-        mAdapter = new FoldingCellListAdapter(getContext(), orders);
+        mAdapter = new AllOrdersCellAdapter(getContext(), orders);
 
         // set on click event listener to list view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

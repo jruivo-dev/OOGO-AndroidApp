@@ -116,8 +116,8 @@ public class LoginActivity extends AppCompatActivity {
 
         private ProgressDialog pDialog;
 
-        //        private static final String LOGIN_URL = "http://10.0.3.2/android/login.php";
-        private static final String LOGIN_URL = "http://192.168.1.108/android/login.php";
+        private static final String LOGIN_URL = "http://10.0.3.2/android/login.php";
+//        private static final String LOGIN_URL = "http://192.168.1.108/android/login.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";

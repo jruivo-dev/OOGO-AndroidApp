@@ -31,14 +31,14 @@ import java.util.List;
  * Created by Jojih on 11/04/2017.
  */
 
-public class FoldingCellListAdapter extends ArrayAdapter<Order> {
+public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
     private View.OnClickListener defaultRequestBtnClickListener;
 
     private FoldingCell cell;
 
-    public FoldingCellListAdapter(Context context, List<Order> orders) {
+    public AllOrdersCellAdapter(Context context, List<Order> orders) {
         super(context, 0, orders);
     }
 
