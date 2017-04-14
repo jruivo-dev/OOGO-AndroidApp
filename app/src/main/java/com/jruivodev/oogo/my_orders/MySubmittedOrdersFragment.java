@@ -48,7 +48,7 @@ public class MySubmittedOrdersFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.listview_my_submitted_orders, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.list_view_my_submitted);
-        mAdapter = new AllOrdersCellAdapter(getContext(), orders);
+        mAdapter = new AllOrdersCellAdapter(getContext(), orders, true);
 
         // set on click event listener to list view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

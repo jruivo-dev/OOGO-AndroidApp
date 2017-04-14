@@ -166,17 +166,75 @@ Descricao de tudo o meu deus ddo " />
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/button_submit_application"
+
+            <LinearLayout
+                android:id="@+id/normal_layout_mode_buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@color/md_yellow_700"
-                android:text="@string/submit_application" />
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/button_submit_application"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/md_yellow_700"
+                    android:text="@string/submit_application" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/edit_layout_mode_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/button_view_users"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/md_lime_A100"
+                    android:text="@string/button_view_users"
+                    android:textColor="@color/md_black_1000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_delete_order"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/md_teal_600"
+                        android:text="@string/button_edit_order"
+                        android:textColor="@color/md_white_1000" />
+
+                    <Button
+                        android:id="@+id/button_edit_order"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/md_red_500"
+                        android:text="@string/button_delete_order"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
         </RelativeLayout>
     </FrameLayout>
     ​

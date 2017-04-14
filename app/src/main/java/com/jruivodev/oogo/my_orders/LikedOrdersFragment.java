@@ -31,7 +31,7 @@ public class LikedOrdersFragment extends Fragment {
         // prepare elements to display
         final ArrayList<Order> items = new ArrayList<>();
 
-        adapter = new AllOrdersCellAdapter(root.getContext(), items);
+        adapter = new AllOrdersCellAdapter(root.getContext(), items, false);
         listView.setAdapter(adapter);
 
         // set on click event listener to list view

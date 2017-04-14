@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,11 +36,12 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
     private View.OnClickListener defaultRequestBtnClickListener;
-
     private FoldingCell cell;
+    private Boolean isEditMode = false;
 
-    public AllOrdersCellAdapter(Context context, List<Order> orders) {
+    public AllOrdersCellAdapter(Context context, List<Order> orders, Boolean isEditMode) {
         super(context, 0, orders);
+        this.isEditMode = isEditMode;
     }
 
     @Override
@@ -90,30 +92,20 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         viewHolder.unfoldOrderCategory.setText(item.getCategory());
 
 
-        LikeButton btnLike = (LikeButton) cell.findViewById(R.id.star_button);
-        btnLike.setOnLikeListener(new OnLikeListener() {
-            @Override
-            public void liked(LikeButton likeButton) {
-                Toast.makeText(getContext(), getItem(position) + "", Toast.LENGTH_SHORT).show();
-            }
+        LinearLayout normalMode = (LinearLayout) cell.findViewById(R.id.normal_layout_mode_buttons);
+        LinearLayout editMode = (LinearLayout) cell.findViewById(R.id.edit_layout_mode_buttons);
 
-            @Override
-            public void unLiked(LikeButton likeButton) {
+        if (isEditMode) {
+            editMode.setVisibility(View.VISIBLE);
+            normalMode.setVisibility(View.GONE);
+        } else {
+            editMode.setVisibility(View.GONE);
+            normalMode.setVisibility(View.VISIBLE);
+        }
 
-            }
-        });
 
         setListeners(position);
 
-        cell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // toggle clicked cell state
-                ((FoldingCell) v).toggle(false);
-                // register in adapter that state for selected cell is toggled
-                registerToggle(position);
-            }
-        });
 
         return cell;
     }
@@ -130,6 +122,30 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
 
             }
         });
+
+        LikeButton btnLike = (LikeButton) cell.findViewById(R.id.star_button);
+        btnLike.setOnLikeListener(new OnLikeListener() {
+            @Override
+            public void liked(LikeButton likeButton) {
+                Toast.makeText(getContext(), getItem(position) + "", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void unLiked(LikeButton likeButton) {
+
+            }
+        });
+
+        cell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // toggle clicked cell state
+                ((FoldingCell) v).toggle(false);
+                // register in adapter that state for selected cell is toggled
+                registerToggle(position);
+            }
+        });
+
     }
 
 

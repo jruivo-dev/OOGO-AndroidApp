@@ -46,7 +46,7 @@ public class PendingOrdersFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.list_pending_orders);
 
 //        mAdapter = new OrderAdapter(getContext(), orders);
-        mAdapter = new AllOrdersCellAdapter(getContext(), orders);
+        mAdapter = new AllOrdersCellAdapter(getContext(), orders, false);
 
         // set on click event listener to list view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

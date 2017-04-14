@@ -48,7 +48,7 @@ public class PostedOrdersFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.list_view_all_orders);
 
 //        mAdapter = new OrderAdapter(getContext(), orders);
-        mAdapter = new AllOrdersCellAdapter(getContext(), orders);
+        mAdapter = new AllOrdersCellAdapter(getContext(), orders, false);
 
         // set on click event listener to list view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
