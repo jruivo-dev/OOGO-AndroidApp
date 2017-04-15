@@ -138,7 +138,7 @@ public class PostedOrdersFragment extends Fragment {
         protected void onPostExecute(JSONObject json) {
 
             mAdapter.clear();
-            mAdapter.addAll(orders);
+//            mAdapter.addAll(orders);
 
             int success = 0;
             String message = "";
@@ -162,6 +162,7 @@ public class PostedOrdersFragment extends Fragment {
                         String description = currentOrder.getString("description");
                         String category = currentOrder.getString("category");
                         String price = currentOrder.getString("price");
+
                         orders.add(new Order(id, title, description, category, price));
                     }
 

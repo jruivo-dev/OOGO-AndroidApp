@@ -8,9 +8,8 @@ public class User {
     private String mId, mEmail, mName, mAddress, mContact, mPhoto;
     private Boolean isPremium;
 
-    public User(String mId, String mEmail, String mName) {
+    public User(String mId, String mName) {
         this.mId = mId;
-        this.mEmail = mEmail;
         this.mName = mName;
     }
 
