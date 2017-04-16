@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.R;
@@ -41,10 +42,20 @@ public class UsersAcceptedActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         mOrderId = b.getString("orderId");
 
-//        Toast.makeText(this, "orderid: " + mOrderId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "orderid: " + mOrderId, Toast.LENGTH_SHORT).show();
+
 
         listView = (ListView) findViewById(R.id.listview_accepted_users);
-        mAdapter = new UserAdapter(this, new ArrayList<User>(), mOrderId);
+        mAdapter = new UserAdapter(this, new ArrayList<User>(), mOrderId, listView);
+
+        Button acceptBtn = (Button) findViewById(R.id.button_accept_user);
+        if (acceptBtn != null)
+            acceptBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                new acceptUser.execute(mUserId, mOrderId);
+                }
+            });
 
         Button btn = (Button) findViewById(R.id.button_go_back);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +129,13 @@ public class UsersAcceptedActivity extends AppCompatActivity {
                         String photo = currentUser.getString("photo");
                         String contact = currentUser.getString("contact");
                         String address = currentUser.getString("address");
+                        String orderState = currentUser.getString("orderState");
 
-                        users.add(new User(userId, name));
+                        User newUser = new User(userId, name);
+                        newUser.setOrderState(mOrderId, orderState);
+
+                        users.add(newUser);
+
                     }
 
                     mAdapter.addAll(users);

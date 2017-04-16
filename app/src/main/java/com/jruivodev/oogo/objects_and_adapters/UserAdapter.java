@@ -3,18 +3,20 @@ package com.jruivodev.oogo.objects_and_adapters;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.R;
+import com.jruivodev.oogo.my_orders.UsersAcceptedActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,14 +32,16 @@ public class UserAdapter extends ArrayAdapter<User> {
 
     private View listRow;
     private String mOrderId;
+    private LinearLayout userNotChosenLayout, userChosenLayout;
+    private ListView mListView;
+    private Boolean isUserChosen = false;
 
-    public UserAdapter(Context context, List<User> users, String orderId) {
+    public UserAdapter(Context context, List<User> users, String orderId, ListView listView) {
         super(context, 0, users);
         mOrderId = orderId;
+        mListView = listView;
     }
 
-
-    @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         listRow = convertView;
@@ -47,22 +51,54 @@ public class UserAdapter extends ArrayAdapter<User> {
         }
 
         User currentUser = getItem(position);
-
         TextView userName = (TextView) listRow.findViewById(R.id.textview_user_name);
         userName.setText(currentUser.getName());
-        setListeners(position);
+        userNotChosenLayout = (LinearLayout) listRow.findViewById(R.id.user_not_chosen_layout);
+        userChosenLayout = (LinearLayout) listRow.findViewById(R.id.user_chosen_layout);
 
+        String orderState = currentUser.getOrderState(mOrderId);
+        if (orderState.equals("accepted")) {
+            userChosenLayout.setVisibility(View.VISIBLE);
+            userNotChosenLayout.setVisibility(View.GONE);
+
+        }
+
+        setListeners(position);
         return listRow;
     }
 
-    private void setListeners(final int position) {
+    // Get View based on position and listView
+    private View getViewByPosition(int pos, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
 
+        if (pos < firstListItemPosition || pos > lastListItemPosition) {
+            return listView.getAdapter().getView(pos, null, listView);
+        } else {
+            final int childIndex = pos - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
+    }
+
+    private void setListeners(final int position) {
         Button acceptBtn = (Button) listRow.findViewById(R.id.button_accept_user);
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "UserID: " + getItem(position).getId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Order state: " + getItem(position).getOrderState(mOrderId), Toast.LENGTH_SHORT).show();
                 new AcceptUser().execute(mOrderId, getItem(position).getId());
+
+
+                View view = getViewByPosition(position, mListView);
+                userChosenLayout = (LinearLayout) view.findViewById(R.id.user_chosen_layout);
+                userNotChosenLayout = (LinearLayout) view.findViewById(R.id.user_not_chosen_layout);
+
+                userChosenLayout.setVisibility(View.VISIBLE);
+                userNotChosenLayout.setVisibility(View.GONE);
+
+                ((UsersAcceptedActivity) getContext()).finish();
+
 
             }
         });

@@ -1,5 +1,7 @@
 package com.jruivodev.oogo.objects_and_adapters;
 
+import java.util.HashMap;
+
 /**
  * Created by Jojih on 14/04/2017.
  */
@@ -7,10 +9,19 @@ package com.jruivodev.oogo.objects_and_adapters;
 public class User {
     private String mId, mEmail, mName, mAddress, mContact, mPhoto;
     private Boolean isPremium;
+    private HashMap<String, String> orderState = new HashMap();
 
     public User(String mId, String mName) {
         this.mId = mId;
         this.mName = mName;
+    }
+
+    public String getOrderState(String orderId) {
+        return orderState.get(orderId);
+    }
+
+    public void setOrderState(String orderId, String state) {
+        orderState.put(orderId, state);
     }
 
     public String getId() {
