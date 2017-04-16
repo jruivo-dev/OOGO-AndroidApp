@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.R;
@@ -30,7 +29,7 @@ public class UsersAcceptedActivity extends AppCompatActivity {
 
     private ListView listView;
     private UserAdapter mAdapter;
-    private String mOrderId;
+    private String mOrderId, mUserId;
     private ArrayList<User> users = new ArrayList<>();
 
 
@@ -42,12 +41,10 @@ public class UsersAcceptedActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         mOrderId = b.getString("orderId");
 
-        Toast.makeText(this, "orderid: " + mOrderId, Toast.LENGTH_SHORT).show();
-
+//        Toast.makeText(this, "orderid: " + mOrderId, Toast.LENGTH_SHORT).show();
 
         listView = (ListView) findViewById(R.id.listview_accepted_users);
-        mAdapter = new UserAdapter(this, new ArrayList<User>());
-
+        mAdapter = new UserAdapter(this, new ArrayList<User>(), mOrderId);
 
         Button btn = (Button) findViewById(R.id.button_go_back);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +53,7 @@ public class UsersAcceptedActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
         new GetMyOrderUsers().execute(mOrderId);
     }
