@@ -57,7 +57,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         userChosenLayout = (LinearLayout) listRow.findViewById(R.id.user_chosen_layout);
 
         String orderState = currentUser.getOrderState(mOrderId);
-        if (orderState.equals("accepted")) {
+        if (orderState.equals(OrderState.ACCEPTED.toString())) {
             userChosenLayout.setVisibility(View.VISIBLE);
             userNotChosenLayout.setVisibility(View.GONE);
 
