@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.OrderState;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.objects_and_adapters.User;
 import com.jruivodev.oogo.objects_and_adapters.UserAdapter;
@@ -132,7 +133,8 @@ public class UsersAcceptedActivity extends AppCompatActivity {
                         String orderState = currentUser.getString("orderState");
 
                         User newUser = new User(userId, name);
-                        newUser.setOrderState(mOrderId, orderState);
+                        OrderState.setOrderState(mOrderId, userId, orderState);
+//                        newUser.setOrderState(mOrderId, orderState);
 
                         users.add(newUser);
 

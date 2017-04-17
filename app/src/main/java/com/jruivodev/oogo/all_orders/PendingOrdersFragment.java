@@ -12,9 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jruivodev.oogo.JSONParser;
-import com.jruivodev.oogo.objects_and_adapters.Order;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
+import com.jruivodev.oogo.objects_and_adapters.Order;
 import com.ramotion.foldingcell.FoldingCell;
 import com.yalantis.phoenix.PullToRefreshView;
 
@@ -38,6 +38,7 @@ public class PendingOrdersFragment extends Fragment {
     private ArrayList<Order> orders = new ArrayList<>();
     private ListView listView;
     private PullToRefreshView mPullToRefreshView;
+    private String orderState;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +47,6 @@ public class PendingOrdersFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.list_pending_orders);
 
 //        mAdapter = new OrderAdapter(getContext(), orders);
-        mAdapter = new AllOrdersCellAdapter(getContext(), orders, false);
 
         // set on click event listener to list view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -60,6 +60,9 @@ public class PendingOrdersFragment extends Fragment {
         });
         setRefresher(rootView);
         new GetAsync().execute(LoginActivity.getUserId());
+
+        mAdapter = new AllOrdersCellAdapter(getContext(), orders, false);
+
         return rootView;
     }
 
@@ -157,6 +160,9 @@ public class PendingOrdersFragment extends Fragment {
                         String description = currentOrder.getString("description");
                         String category = currentOrder.getString("category");
                         String price = currentOrder.getString("price");
+
+                        orderState = currentOrder.getString("orderState");
+
                         orders.add(new Order(id, title, description, category, price));
                     }
 

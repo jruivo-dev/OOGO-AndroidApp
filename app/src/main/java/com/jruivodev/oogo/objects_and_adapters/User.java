@@ -9,22 +9,15 @@ import java.util.HashMap;
 public class User {
     private String mId, mEmail, mName, mAddress, mContact, mPhoto;
     private Boolean isPremium;
-    private HashMap<String, String> orderState = new HashMap();
 
     public User(String mId, String mName) {
         this.mId = mId;
         this.mName = mName;
     }
 
+    //TODO put static hasmap for order state here or in order class so it can be accessed from CELL class.
 
 
-    public String getOrderState(String orderId) {
-        return orderState.get(orderId);
-    }
-
-    public void setOrderState(String orderId, String state) {
-        orderState.put(orderId, state);
-    }
 
     public String getId() {
         return mId;

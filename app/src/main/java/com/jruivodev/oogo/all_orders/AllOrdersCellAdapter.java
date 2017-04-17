@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.OrderState;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.my_orders.UsersAcceptedActivity;
@@ -42,6 +44,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
     private FoldingCell cell;
     private Boolean isEditMode = false;
     private Button btnViewUsers;
+    private String mOrderState;
 
     public AllOrdersCellAdapter(Context context, List<Order> orders, Boolean isEditMode) {
         super(context, 0, orders);
@@ -70,6 +73,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             viewHolder.unfoldOrderDescription = (TextView) cell.findViewById(R.id.unfold_order_description);
             viewHolder.unfoldOrderPrice = (TextView) cell.findViewById(R.id.unfold_order_price);
             viewHolder.unfoldOrderCategory = (TextView) cell.findViewById(R.id.unfold_order_category);
+            viewHolder.orderStateView = (ImageView) cell.findViewById(R.id.order_state);
 
 
             cell.setTag(viewHolder);
@@ -83,6 +87,21 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             }
             viewHolder = (ViewHolder) cell.getTag();
         }
+
+
+        if (mOrderState != null) {
+//            mOrderState = User.getOrderState(item.getId());
+//            Log.d("ORDER STATES.", mOrderState);
+
+            if (mOrderState.equals(OrderState.State.PENDING.toString())) {
+                viewHolder.orderStateView.setImageResource(R.drawable.timer);
+            } else if (mOrderState.equals(OrderState.State.ACCEPTED.toString())) {
+                viewHolder.orderStateView.setImageResource(R.drawable.checkbox_marked_circle);
+            } else {
+                viewHolder.orderStateView.setImageResource(R.drawable.declined_circle);
+            }
+        } else
+            viewHolder.orderStateView.setVisibility(View.GONE);
 
 
         viewHolder.orderTitle.setText(item.getTitle());
@@ -131,7 +150,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         btnLike.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton likeButton) {
-                Toast.makeText(getContext(), getItem(position) + "", Toast.LENGTH_SHORT).show();
+                if (mOrderState != null)
+                    Toast.makeText(getContext(), mOrderState, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -202,6 +222,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         TextView unfoldOrderDescription;
         TextView unfoldOrderPrice;
         TextView unfoldOrderCategory;
+        ImageView orderStateView;
     }
 
 

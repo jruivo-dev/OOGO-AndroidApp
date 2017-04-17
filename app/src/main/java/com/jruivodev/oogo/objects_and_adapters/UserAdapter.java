@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.OrderState;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.my_orders.UsersAcceptedActivity;
 
@@ -56,8 +57,10 @@ public class UserAdapter extends ArrayAdapter<User> {
         userNotChosenLayout = (LinearLayout) listRow.findViewById(R.id.user_not_chosen_layout);
         userChosenLayout = (LinearLayout) listRow.findViewById(R.id.user_chosen_layout);
 
-        String orderState = currentUser.getOrderState(mOrderId);
-        if (orderState.equals(OrderState.ACCEPTED.toString())) {
+//        String orderState = currentUser.getOrderState(mOrderId);
+        String orderState = OrderState.getOrderState(mOrderId, currentUser.getId());
+
+        if (orderState.equals(OrderState.State.ACCEPTED.toString())) {
             userChosenLayout.setVisibility(View.VISIBLE);
             userNotChosenLayout.setVisibility(View.GONE);
 
@@ -86,7 +89,7 @@ public class UserAdapter extends ArrayAdapter<User> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "UserID: " + getItem(position).getId(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Order state: " + getItem(position).getOrderState(mOrderId), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Order state: " + getItem(position).getOrderState(mOrderId), Toast.LENGTH_SHORT).show();
                 new AcceptUser().execute(mOrderId, getItem(position).getId());
 
 
