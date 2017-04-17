@@ -45,6 +45,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
     private Boolean isEditMode = false;
     private Button btnViewUsers;
     private String mOrderState;
+    private String mUserId = LoginActivity.getUserId();
+    private String mOrderId;
 
     public AllOrdersCellAdapter(Context context, List<Order> orders, Boolean isEditMode) {
         super(context, 0, orders);
@@ -55,6 +57,10 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
     public View getView(final int position, final View convertView, final ViewGroup parent) {
         // get item for selected view
         Order item = getItem(position);
+
+
+        mOrderId = item.getId();
+
         // if cell is exists - reuse it, if not - create the new one from resource
         cell = (FoldingCell) convertView;
         ViewHolder viewHolder;
@@ -88,6 +94,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             viewHolder = (ViewHolder) cell.getTag();
         }
 
+
+        mOrderState = OrderState.getOrderState(mOrderId, mUserId);
 
         if (mOrderState != null) {
 //            mOrderState = User.getOrderState(item.getId());
@@ -139,6 +147,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(cell.getContext(), "OrderID: " + getItem(position).getId() + "User ID:" + LoginActivity.getUserId(), Toast.LENGTH_SHORT).show();
+
+                OrderState.setOrderState(mOrderId, mUserId, OrderState.State.PENDING.toString());
                 new UpdateRequestOrderStatus().execute(getItem(position).getId(), LoginActivity.getUserId());
 //                Toast.makeText(cell.getContext(), "Your application has been submitted!", Toast.LENGTH_SHORT).show();
                 btnSubmitApplication.setText(getContext().getText(R.string.button_pending));
@@ -150,8 +160,9 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         btnLike.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton likeButton) {
-                if (mOrderState != null)
-                    Toast.makeText(getContext(), mOrderState, Toast.LENGTH_SHORT).show();
+//                if (mOrderState != null)
+//                    Toast.makeText(getContext(), mOrderState, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), OrderState.orderStateMap.toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override

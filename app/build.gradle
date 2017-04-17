@@ -43,6 +43,10 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:10.2.1'
     compile 'com.yalantis:phoenix:1.2.3'
 
+    // https://mvnrepository.com/artifact/com.wesleyhome.jpa/equals-hashcode-builder
+    compile group: 'com.wesleyhome.jpa', name: 'equals-hashcode-builder', version: '1.0.2'
+
+
 
 
     //folding cell

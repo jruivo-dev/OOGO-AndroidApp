@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jruivodev.oogo.JSONParser;
+import com.jruivodev.oogo.OrderState;
 import com.jruivodev.oogo.R;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.objects_and_adapters.Order;
@@ -39,6 +40,7 @@ public class PendingOrdersFragment extends Fragment {
     private ListView listView;
     private PullToRefreshView mPullToRefreshView;
     private String orderState;
+    private String mUserId = LoginActivity.getUserId();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -164,6 +166,7 @@ public class PendingOrdersFragment extends Fragment {
                         orderState = currentOrder.getString("orderState");
 
                         orders.add(new Order(id, title, description, category, price));
+                        OrderState.setOrderState(id, mUserId, orderState);
                     }
 
                     listView.setAdapter(mAdapter);
