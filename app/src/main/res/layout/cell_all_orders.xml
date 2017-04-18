@@ -19,6 +19,8 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="450dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/recycler_shape">
             <!--android:background="#E8F5E9"-->
@@ -306,7 +308,7 @@ Descricao de tudo o meu deus ddo " />
 
 
                     <TextView
-                        android:id="@+id/order_user"
+                        android:id="@+id/order_user_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"

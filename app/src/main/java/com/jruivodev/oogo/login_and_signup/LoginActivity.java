@@ -41,10 +41,15 @@ public class LoginActivity extends AppCompatActivity {
     public static String PREF_USERNAME = "username";
     public static String PREF_PASSWORD = "password";
 
+    private static String USER_NAME = "";
+
     public static String getUserId() {
         return USER_ID;
     }
 
+    public static String getUserName() {
+        return USER_NAME;
+    }
 
     public void getUser() {
         SharedPreferences pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -153,6 +158,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (json != null) {
                     Log.d("JSON result", json.toString());
                     USER_ID = json.getString("uid");
+                    USER_NAME = json.getString("userName");
                     return json;
                 }
 

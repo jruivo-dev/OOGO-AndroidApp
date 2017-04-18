@@ -81,6 +81,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             viewHolder.unfoldOrderCategory = (TextView) cell.findViewById(R.id.unfold_order_category);
             viewHolder.orderStateView = (ImageView) cell.findViewById(R.id.order_state);
 
+            viewHolder.orderUserName = (TextView) cell.findViewById(R.id.order_user_name);
+
 
             cell.setTag(viewHolder);
 
@@ -228,6 +230,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         TextView orderTitle;
         TextView orderDescription;
         TextView orderPrice;
+        TextView orderUserName;
+        TextView orderUserNameUnfold;
         TextView orderCategory;
         TextView unfoldOrderTitle;
         TextView unfoldOrderDescription;

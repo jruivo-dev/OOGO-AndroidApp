@@ -27,8 +27,6 @@ public class OrderState {
         this.mUserId = mUserId;
     }
 
-    // TODO NOT GETTING THE OBJECTS BECAUSE i'M CREATING A NEW ONE EVERYFUCKING TIME.!!! WRONG REFERENCE ..
-
     public static String getOrderState(String orderId, String userId) {
         OrderState o = new OrderState(orderId, userId);
         if (orderStateMap.containsKey(o))
