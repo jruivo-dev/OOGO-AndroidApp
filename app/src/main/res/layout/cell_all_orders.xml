@@ -53,17 +53,26 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/unfold_profile_image"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginBottom="18dp"-->
+                    <!--android:src="@drawable/professional" />-->
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/unfold_profile_image"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="18dp"
-                        android:src="@drawable/professional" />
+                        android:src="@drawable/professional"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0.5dp" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
                         android:layout_toRightOf="@id/unfold_profile_image"
                         android:orientation="vertical">
 
@@ -186,6 +195,19 @@ Descricao de tudo o meu deus ddo " />
                     android:layout_marginTop="16dp"
                     android:backgroundTint="@color/md_yellow_700"
                     android:text="@string/submit_application" />
+
+                <Button
+                    android:id="@+id/button_cancel_application"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/md_red_700"
+                    android:text="@string/button_pending_cancel"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <LinearLayout
@@ -247,11 +269,8 @@ Descricao de tudo o meu deus ddo " />
         android:id="@+id/cell_title_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/cell_content_view"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -259,6 +278,8 @@ Descricao de tudo o meu deus ddo " />
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="110dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/recycler_shape"
 
@@ -277,14 +298,25 @@ Descricao de tudo o meu deus ddo " />
                     android:layout_weight="0.82"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/profile_image"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_marginBottom="18dp"-->
+                    <!--android:src="@drawable/professional" />-->
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/profile_image"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="18dp"
-                        android:src="@drawable/professional" />
+                        android:src="@drawable/professional"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0.5dp" />
 
                     <!--app:civ_border_width="0.09dp"-->
                     <!--app:civ_border_color="#FF000000"-->

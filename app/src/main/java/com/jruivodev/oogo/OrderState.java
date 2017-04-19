@@ -12,7 +12,7 @@ public class OrderState {
     private static String mOrderState;
 
 
-    public static Map<OrderState, String> orderStateMap = new HashMap<>();
+    private static Map<OrderState, String> orderStateMap = new HashMap<>();
 
     public String getOrderId() {
         return mOrderId;
@@ -25,6 +25,12 @@ public class OrderState {
     private OrderState(String mOrderId, String mUserId) {
         this.mOrderId = mOrderId;
         this.mUserId = mUserId;
+    }
+
+    public static void removeOrderState(String orderId, String userId) {
+        OrderState o = new OrderState(orderId, userId);
+        if (orderStateMap.containsKey(o))
+            orderStateMap.remove(o);
     }
 
     public static String getOrderState(String orderId, String userId) {
