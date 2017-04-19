@@ -160,10 +160,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(cell.getContext(), "OrderID: " + getItem(position).getId() + "User ID:" + LoginActivity.getUserId(), Toast.LENGTH_SHORT).show();
-
                 OrderState.setOrderState(mOrderId, mUserId, OrderState.State.PENDING.toString());
                 new UpdateRequestOrderStatus().execute(getItem(position).getId(), LoginActivity.getUserId());
-//                Toast.makeText(cell.getContext(), "Your application has been submitted!", Toast.LENGTH_SHORT).show();
                 btnSubmitApplication.setVisibility(View.GONE);
                 btnCancel.setVisibility(View.VISIBLE);
 

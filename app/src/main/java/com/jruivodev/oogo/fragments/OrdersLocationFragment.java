@@ -15,6 +15,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jruivodev.oogo.R;
 
+import static com.jruivodev.oogo.R.id.map;
+
 /**
  * Created by Jojih on 09/04/2017.
  */
@@ -34,7 +36,7 @@ public class OrdersLocationFragment extends Fragment implements OnMapReadyCallba
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_maps_fragment, null, false);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(map);
         mapFragment.getMapAsync(this);
 
         return view;
@@ -54,9 +56,17 @@ public class OrdersLocationFragment extends Fragment implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        /*
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+*/
+        LatLng iscte = new LatLng(38.747841, -9.153443);
+        mMap.addMarker(new MarkerOptions().position(iscte).title("Isto é o ISCTE"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(iscte, 13.5f));
+
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(38.747841, -9.153443), 14.0f));
+
     }
 }
