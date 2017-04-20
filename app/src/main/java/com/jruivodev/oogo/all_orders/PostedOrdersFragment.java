@@ -162,8 +162,9 @@ public class PostedOrdersFragment extends Fragment {
                         String description = currentOrder.getString("description");
                         String category = currentOrder.getString("category");
                         String price = currentOrder.getString("price");
+                        String userName = currentOrder.getString("userName");
 
-                        orders.add(new Order(id, title, description, category, price));
+                        orders.add(new Order(id, title, description, category, price, userName));
                     }
 
                     listView.setAdapter(mAdapter);

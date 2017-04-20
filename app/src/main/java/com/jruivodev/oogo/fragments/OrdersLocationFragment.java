@@ -63,7 +63,7 @@ public class OrdersLocationFragment extends Fragment implements OnMapReadyCallba
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 */
         LatLng iscte = new LatLng(38.747841, -9.153443);
-        mMap.addMarker(new MarkerOptions().position(iscte).title("Isto é o ISCTE"));
+        mMap.addMarker(new MarkerOptions().position(iscte).title("Aqui estuda-se"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(iscte, 13.5f));
 
 //        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(38.747841, -9.153443), 14.0f));

@@ -84,6 +84,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             viewHolder.orderStateView = (ImageView) cell.findViewById(R.id.order_state);
 
             viewHolder.orderUserName = (TextView) cell.findViewById(R.id.order_user_name);
+            viewHolder.orderUserNameUnfold = (TextView) cell.findViewById(R.id.unfold_order_user_name);
 
 
             btnCancel = (Button) cell.findViewById(R.id.button_cancel_application);
@@ -130,6 +131,10 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         viewHolder.orderDescription.setText(item.getDescription());
         viewHolder.orderPrice.setText(item.getPrice() + "€");
         viewHolder.orderCategory.setText(item.getCategory());
+        viewHolder.orderUserName.setText(item.getUserName());
+
+        viewHolder.orderUserNameUnfold.setText(item.getUserName());
+
 
         viewHolder.unfoldOrderTitle.setText(item.getTitle());
         viewHolder.unfoldOrderDescription.setText(item.getDescription());
