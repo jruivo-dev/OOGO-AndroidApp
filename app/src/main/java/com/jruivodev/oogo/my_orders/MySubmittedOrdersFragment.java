@@ -156,8 +156,9 @@ public class MySubmittedOrdersFragment extends Fragment {
                         String category = currentOrder.getString("category");
                         String price = currentOrder.getString("price");
                         String userName = currentOrder.getString("userName");
+                        String location = currentOrder.getString("location");
 
-                        orders.add(new Order(id, title, description, category, price, userName));
+                        orders.add(new Order(id, title, description, category, price, userName, location));
 
                     }
                     listView.setAdapter(mAdapter);

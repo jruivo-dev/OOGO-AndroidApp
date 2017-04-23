@@ -5,15 +5,21 @@ package com.jruivodev.oogo.objects_and_adapters;
  */
 
 public class Order {
-    private String mTitle, mDescription, mCategory, mPrice, mId, mUserName;
+    private String mTitle, mDescription, mCategory, mPrice, mId, mUserName, mLocation;
 
-    public Order(String id, String mTitle, String mDescription, String mCategory, String mPrice, String userName) {
+    public Order(String id, String mTitle, String mDescription, String mCategory, String mPrice, String userName, String mLocation) {
         mId = id;
         this.mTitle = mTitle;
+        this.mLocation = mLocation;
+
         this.mDescription = mDescription;
         this.mCategory = mCategory;
         this.mPrice = mPrice;
         mUserName = userName;
+    }
+
+    public String getLocation() {
+        return mLocation;
     }
 
     public String getUserName() {

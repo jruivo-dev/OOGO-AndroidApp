@@ -2,6 +2,8 @@ package com.jruivodev.oogo.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,21 +14,25 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.jruivodev.oogo.Category;
 import com.jruivodev.oogo.JSONParser;
-import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.MainScreen;
 import com.jruivodev.oogo.R;
+import com.jruivodev.oogo.login_and_signup.LoginActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Jojih on 09/04/2017.
@@ -34,9 +40,10 @@ import java.util.HashMap;
 
 public class NewOrderFragment extends Fragment {
 
-    private EditText titleEditText, descriptionEditText, priceEditText;
+    private EditText titleEditText, descriptionEditText, priceEditText, locationEditText;
     private Button btnSubmit;
-    private String mTitle, mDescription, mPrice;
+    private ImageButton btnLocation;
+    private String mTitle, mDescription, mPrice, mLocation;
     private Spinner spinner;
     private ArrayList<Category> categories = new ArrayList<>();
 
@@ -50,6 +57,16 @@ public class NewOrderFragment extends Fragment {
         titleEditText = (EditText) rootView.findViewById(R.id.new_order_title);
         descriptionEditText = (EditText) rootView.findViewById(R.id.new_order_description);
         priceEditText = (EditText) rootView.findViewById(R.id.new_order_price);
+        locationEditText = (EditText) rootView.findViewById(R.id.new_order_location);
+
+        btnLocation = (ImageButton) rootView.findViewById(R.id.button_location);
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLocation = locationEditText.getText().toString().trim();
+                getLocationFromAddress(mLocation);
+            }
+        });
 
         btnSubmit = (Button) rootView.findViewById(R.id.new_order_button);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +75,8 @@ public class NewOrderFragment extends Fragment {
                 mTitle = titleEditText.getText().toString().trim();
                 mDescription = descriptionEditText.getText().toString().trim();
                 mPrice = priceEditText.getText().toString().trim();
+                mLocation = locationEditText.getText().toString().trim();
+
 
                 String spinnerCategory = spinner.getSelectedItem().toString();
                 String categoryId = "";
@@ -67,7 +86,7 @@ public class NewOrderFragment extends Fragment {
                         categoryId = c.getId();
                 }
 
-                new PostAsync().execute(mTitle, mDescription, mPrice, categoryId, LoginActivity.getUserId());
+                new PostAsync().execute(mTitle, mDescription, mPrice, categoryId, LoginActivity.getUserId(), mLocation);
             }
         });
 
@@ -75,6 +94,37 @@ public class NewOrderFragment extends Fragment {
         return rootView;
     }
 
+    public void getLocationFromAddress(String strAddress) {
+        //Create coder with Activity context - this
+        Geocoder coder = new Geocoder(getContext());
+        List<Address> address;
+
+        try {
+            //Get latLng from String
+            address = coder.getFromLocationName(strAddress, 5);
+
+            //check for null
+            if (address == null) {
+                return;
+            }
+
+            //Lets take first possibility from the all possibilities.
+            Address location = address.get(0);
+            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+            Toast.makeText(getContext(), location + "", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), latLng + "", Toast.LENGTH_LONG).show();
+//            //Put marker on map on that LatLng
+//            Marker srchMarker = mMap.addMarker(new MarkerOptions().position(latLng).title("Destination").icon(BitmapDescriptorFactory.fromResource(R.drawable.bb)));
+//
+//            //Animate and Zoon on that map location
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+//            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     class PostAsync extends AsyncTask<String, String, JSONObject> {
         JSONParser jsonParser = new JSONParser();
@@ -105,6 +155,7 @@ public class NewOrderFragment extends Fragment {
                 params.put("price", args[2]);
                 params.put("category", args[3]);
                 params.put("userID", args[4]);
+                params.put("location", args[5]);
 
                 Log.d("request", "starting");
 

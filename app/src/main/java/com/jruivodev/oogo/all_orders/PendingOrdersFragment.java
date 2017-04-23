@@ -166,8 +166,9 @@ public class PendingOrdersFragment extends Fragment {
                         orderState = currentOrder.getString("orderState");
 
                         String userName = currentOrder.getString("userName");
+                        String location = currentOrder.getString("location");
 
-                        orders.add(new Order(id, title, description, category, price, userName));
+                        orders.add(new Order(id, title, description, category, price, userName, location));
                         OrderState.setOrderState(id, mUserId, orderState);
                     }
 

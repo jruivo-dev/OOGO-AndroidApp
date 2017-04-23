@@ -50,7 +50,7 @@
 
 
             <ImageButton
-                android:id="@+id/imgBtn"
+                android:id="@+id/button_location"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:adjustViewBounds="true"
