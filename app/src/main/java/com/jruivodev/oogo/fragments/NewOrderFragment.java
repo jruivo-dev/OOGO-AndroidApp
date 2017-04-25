@@ -76,6 +76,7 @@ public class NewOrderFragment extends Fragment {
                 mDescription = descriptionEditText.getText().toString().trim();
                 mPrice = priceEditText.getText().toString().trim();
                 mLocation = locationEditText.getText().toString().trim();
+                String formattedAddress = getFormattedAddress(mLocation);
 
 
                 String spinnerCategory = spinner.getSelectedItem().toString();
@@ -86,7 +87,7 @@ public class NewOrderFragment extends Fragment {
                         categoryId = c.getId();
                 }
 
-                new PostAsync().execute(mTitle, mDescription, mPrice, categoryId, LoginActivity.getUserId(), mLocation);
+                new PostAsync().execute(mTitle, mDescription, mPrice, categoryId, LoginActivity.getUserId(), formattedAddress);
             }
         });
 
@@ -112,7 +113,7 @@ public class NewOrderFragment extends Fragment {
             Address location = address.get(0);
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-            Toast.makeText(getContext(), location + "", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), location.getAddressLine(0) + "", Toast.LENGTH_LONG).show();
             Toast.makeText(getContext(), latLng + "", Toast.LENGTH_LONG).show();
 //            //Put marker on map on that LatLng
 //            Marker srchMarker = mMap.addMarker(new MarkerOptions().position(latLng).title("Destination").icon(BitmapDescriptorFactory.fromResource(R.drawable.bb)));
@@ -124,6 +125,26 @@ public class NewOrderFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String getFormattedAddress(String strAddress) {
+        //Create coder with Activity context - this
+        Geocoder coder = new Geocoder(getContext());
+        List<Address> address;
+        Address location = null;
+        try {
+            //Get latLng from String
+            address = coder.getFromLocationName(strAddress, 5);
+
+            //Lets take first possibility from the all possibilities.
+            location = address.get(0);
+            Toast.makeText(getContext(), location.getAddressLine(0) + "", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (location != null)
+            return location.getAddressLine(0);
+        return "";
     }
 
     class PostAsync extends AsyncTask<String, String, JSONObject> {
