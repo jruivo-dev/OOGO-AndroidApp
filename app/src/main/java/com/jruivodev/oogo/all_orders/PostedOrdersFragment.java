@@ -33,10 +33,10 @@ public class PostedOrdersFragment extends Fragment {
 
     private final String LOG = "MainActivity";
     //    private OrderAdapter mAdapter;
-    private AllOrdersCellAdapter mAdapter;
+    private static AllOrdersCellAdapter mAdapter;
 
-    private ArrayList<Order> orders = new ArrayList<>();
-    private ListView listView;
+    private static ArrayList<Order> orders = new ArrayList<>();
+    private static ListView listView;
     private PullToRefreshView mPullToRefreshView;
     public static final int REFRESH_DELAY = 500;
 
@@ -87,8 +87,14 @@ public class PostedOrdersFragment extends Fragment {
         });
     }
 
+    public static void updateAllOrders() {
+        new GetAsync().execute(LoginActivity.getUserId());
+        listView.destroyDrawingCache();
+        listView.setVisibility(ListView.INVISIBLE);
+        listView.setVisibility(ListView.VISIBLE);
+    }
 
-    private class GetAsync extends AsyncTask<String, String, JSONObject> {
+    private static class GetAsync extends AsyncTask<String, String, JSONObject> {
 
         JSONParser jsonParser = new JSONParser();
 
@@ -102,11 +108,11 @@ public class PostedOrdersFragment extends Fragment {
 
         @Override
         protected void onPreExecute() {
-            pDialog = new ProgressDialog(getContext());
-            pDialog.setMessage("Loading orders...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+//            pDialog = new ProgressDialog();
+//            pDialog.setMessage("Loading orders...");
+//            pDialog.setIndeterminate(false);
+//            pDialog.setCancelable(true);
+//            pDialog.show();
         }
 
         @Override

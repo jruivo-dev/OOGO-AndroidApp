@@ -23,25 +23,32 @@ public class MainAllOrdersPosted extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.view_pager_all_orders, container, false);
 
-        ViewPager viewPager = (ViewPager) root.findViewById(R.id.viewpager_my_orders);
+        final ViewPager viewPager = (ViewPager) root.findViewById(R.id.viewpager_my_orders);
         NavigationTabStrip mTopNavigationTabStrip = (NavigationTabStrip) root.findViewById(R.id.nav_all_orders);
 
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//
-//                Toast.makeText(getContext(), "aqui", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//            }
-//        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                Toast.makeText(getContext(), "aqui", Toast.LENGTH_SHORT).show();
+                MyAdapter adapter = (MyAdapter) viewPager.getAdapter();
+                if (position == 0) {
+                    adapter.getItem(0);
+                } else {
+                    adapter.getItem(1);
+
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
 
         /** Important: Must use the child FragmentManager or you will see side effects. */
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));

@@ -179,6 +179,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
                 new UpdateRequestOrderStatus().execute(getItem(position).getId(), LoginActivity.getUserId());
                 btnSubmitApplication.setVisibility(View.GONE);
                 btnCancel.setVisibility(View.VISIBLE);
+                PostedOrdersFragment.updateAllOrders();
 
             }
         });
