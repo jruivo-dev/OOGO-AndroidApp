@@ -2,6 +2,7 @@ package com.jruivodev.oogo;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.jruivodev.oogo.all_orders.MainAllOrdersPosted;
@@ -66,10 +67,16 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
-        mBottomBar.mapColorForTab(0, "#f44336");
-        mBottomBar.mapColorForTab(1, "#9C27B0");
-        mBottomBar.mapColorForTab(2, "#03A9F4");
-        mBottomBar.mapColorForTab(3, "#8BC34A");
+
+//        mBottomBar.mapColorForTab(0, "#f44336");
+//        mBottomBar.mapColorForTab(1, "#9C27B0");
+//        mBottomBar.mapColorForTab(2, "#03A9F4");
+//        mBottomBar.mapColorForTab(3, "#8BC34A");
+        mBottomBar.mapColorForTab(0, ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, null));
+        mBottomBar.mapColorForTab(1, ResourcesCompat.getColor(getResources(), R.color.colorPrimary, null));
+        mBottomBar.mapColorForTab(2, ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, null));
+        mBottomBar.mapColorForTab(3, ResourcesCompat.getColor(getResources(), R.color.colorPrimary, null));
+        mBottomBar.mapColorForTab(4, ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, null));
 
     }
 }

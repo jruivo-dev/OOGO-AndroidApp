@@ -3,8 +3,11 @@ package com.jruivodev.oogo.all_orders;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,6 +90,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             viewHolder.orderUserName = (TextView) cell.findViewById(R.id.order_user_name);
             viewHolder.orderUserNameUnfold = (TextView) cell.findViewById(R.id.unfold_order_user_name);
 
+            viewHolder.ratingBar = (RatingBar) cell.findViewById(R.id.rating_bar);
+
 
             btnCancel = (Button) cell.findViewById(R.id.button_cancel_application);
             btnSubmitApplication = (Button) cell.findViewById(R.id.button_submit_application);
@@ -141,6 +147,10 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         viewHolder.unfoldOrderPrice.setText("Reward: " + item.getPrice() + "€");
         viewHolder.unfoldOrderCategory.setText(item.getCategory());
 
+
+        // Paints the rating stars color
+        Drawable progress = viewHolder.ratingBar.getProgressDrawable();
+        DrawableCompat.setTint(progress, ContextCompat.getColor(getContext(), R.color.colorPrimary));
 
         LinearLayout normalMode = (LinearLayout) cell.findViewById(R.id.normal_layout_mode_buttons);
         LinearLayout editMode = (LinearLayout) cell.findViewById(R.id.edit_layout_mode_buttons);
@@ -258,6 +268,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         TextView orderCategory;
         TextView unfoldOrderTitle;
         TextView unfoldOrderDescription;
+        RatingBar ratingBar;
         TextView unfoldOrderPrice;
         TextView unfoldOrderCategory;
         ImageView orderStateView;

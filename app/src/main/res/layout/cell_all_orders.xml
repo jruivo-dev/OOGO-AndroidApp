@@ -18,7 +18,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:layout_marginTop="2dp"
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
-                    android:background="@color/backgroundColor"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
                     android:paddingBottom="5dp"
                     android:paddingLeft="3dp"
@@ -64,7 +64,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="18dp"
-                        android:src="@drawable/professional"
+                        android:src="@drawable/profile2"
+
                         app:civ_border_color="#FF000000"
                         app:civ_border_width="0.5dp" />
 
@@ -80,12 +81,19 @@
                             android:id="@+id/unfold_order_user_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
                             android:text="User Test1" />
 
-                        <TextView
+                        <RatingBar
+                            android:id="@+id/rating_bar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rating estrelas" />
+                            android:numStars="5"
+                            android:rating="3.5"
+                            android:scaleX="0.4"
+                            android:scaleY="0.4"
+                            android:stepSize="1.0"
+                            android:transformPivotX="0dp" />
 
 
                     </LinearLayout>
@@ -155,7 +163,7 @@ Descricao de tudo o meu deus ddo " />
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="Reward:"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/unfold_order_location"
@@ -163,7 +171,7 @@ Descricao de tudo o meu deus ddo " />
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="Location:"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/unfold_order_pictures"
@@ -171,7 +179,7 @@ Descricao de tudo o meu deus ddo " />
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="Pictures:"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -271,7 +279,8 @@ Descricao de tudo o meu deus ddo " />
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:visibility="visible">
 
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -312,10 +321,9 @@ Descricao de tudo o meu deus ddo " />
                         android:id="@+id/profile_image"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_alignParentBottom="true"
+                        android:layout_above="@+id/order_user_name"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="18dp"
-                        android:src="@drawable/professional"
+                        android:src="@drawable/profile2"
                         app:civ_border_color="#FF000000"
                         app:civ_border_width="0.5dp" />
 
@@ -329,7 +337,7 @@ Descricao de tudo o meu deus ddo " />
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
                         android:layout_marginTop="2dp"
-                        android:background="@color/backgroundColor"
+                        android:background="@color/primary_dark"
                         android:gravity="center"
                         android:paddingBottom="5dp"
                         android:paddingLeft="3dp"
@@ -366,6 +374,7 @@ Descricao de tudo o meu deus ddo " />
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
+                        android:textColor="@color/colorPrimary_text"
                         android:textStyle="bold"
                         tools:text="This is just a title" />
 
@@ -376,20 +385,30 @@ Descricao de tudo o meu deus ddo " />
                         android:layout_height="0dp"
                         android:layout_weight="2"
                         android:maxLines="4"
+                        android:textColor="@color/colorPrimary_text"
                         tools:text="This is just a normal textdddssdd\nMore words \nMore few words" />
 
                 </LinearLayout>
 
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="104dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/divider" />
+
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.6"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="0.65"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="0.8"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -420,9 +439,27 @@ Descricao de tudo o meu deus ddo " />
                             android:id="@+id/order_price"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="4dp"
                             android:gravity="center"
+                            android:textColor="@color/colorPrimary_text"
                             android:textSize="16sp"
                             tools:text="202.22€" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/order_time_fold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="Today 20:45"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
