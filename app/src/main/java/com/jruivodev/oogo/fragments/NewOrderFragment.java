@@ -152,7 +152,7 @@ public class NewOrderFragment extends Fragment {
 
         private ProgressDialog pDialog;
 
-        private static final String SIGNUP_URL = "http://10.0.3.2/android/add_new_order.php";
+        private  final String SIGNUP_URL = LoginActivity.LOCALHOST_URL +"/android/add_new_order.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
@@ -233,7 +233,7 @@ public class NewOrderFragment extends Fragment {
 
         private ProgressDialog pDialog;
 
-        private static final String LOGIN_URL = "http://10.0.3.2/android/get_categories.php";
+        private  final String LOGIN_URL = LoginActivity.LOCALHOST_URL +"/android/get_categories.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";

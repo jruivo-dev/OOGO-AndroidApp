@@ -33,10 +33,10 @@ public class PostedOrdersFragment extends Fragment {
 
     private final String LOG = "MainActivity";
     //    private OrderAdapter mAdapter;
-    private static AllOrdersCellAdapter mAdapter;
+    private AllOrdersCellAdapter mAdapter;
 
-    private static ArrayList<Order> orders = new ArrayList<>();
-    private static ListView listView;
+    private ArrayList<Order> orders = new ArrayList<>();
+    private ListView listView;
     private PullToRefreshView mPullToRefreshView;
     public static final int REFRESH_DELAY = 500;
 
@@ -87,20 +87,14 @@ public class PostedOrdersFragment extends Fragment {
         });
     }
 
-    public static void updateAllOrders() {
-        new GetAsync().execute(LoginActivity.getUserId());
-        listView.destroyDrawingCache();
-        listView.setVisibility(ListView.INVISIBLE);
-        listView.setVisibility(ListView.VISIBLE);
-    }
 
-    private static class GetAsync extends AsyncTask<String, String, JSONObject> {
+    private class GetAsync extends AsyncTask<String, String, JSONObject> {
 
         JSONParser jsonParser = new JSONParser();
 
         private ProgressDialog pDialog;
 
-        private static final String LOGIN_URL = "http://10.0.3.2/android/get_all_orders.php";
+        private  final String LOGIN_URL = LoginActivity.LOCALHOST_URL +"/android/get_all_orders.php";
 //      private static final String LOGIN_URL = "http://192.168.1.108/android/get_my_orders.php";
 
         private static final String TAG_SUCCESS = "success";
@@ -108,11 +102,11 @@ public class PostedOrdersFragment extends Fragment {
 
         @Override
         protected void onPreExecute() {
-//            pDialog = new ProgressDialog();
-//            pDialog.setMessage("Loading orders...");
-//            pDialog.setIndeterminate(false);
-//            pDialog.setCancelable(true);
-//            pDialog.show();
+            pDialog = new ProgressDialog(getContext());
+            pDialog.setMessage("Loading orders...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
         }
 
         @Override

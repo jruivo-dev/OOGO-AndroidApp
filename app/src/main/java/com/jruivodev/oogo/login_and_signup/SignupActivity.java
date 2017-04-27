@@ -58,7 +58,7 @@ public class SignupActivity extends AppCompatActivity {
 
         private ProgressDialog pDialog;
 
-        private static final String SIGNUP_URL = "http://10.0.3.2/android/registar.php";
+        private  final String SIGNUP_URL = LoginActivity.LOCALHOST_URL + "/android/registar.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";

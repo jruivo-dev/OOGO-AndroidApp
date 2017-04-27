@@ -41,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     public static String PREF_USERNAME = "username";
     public static String PREF_PASSWORD = "password";
 
+//    public static String LOCALHOST_URL = "http://10.0.3.2";
+        public static String LOCALHOST_URL ="http://192.168.1.108";
     private static String USER_NAME = "";
 
     public static String getUserId() {
@@ -121,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
         private ProgressDialog pDialog;
 
-        private static final String LOGIN_URL = "http://10.0.3.2/android/login.php";
+        private final String LOGIN_URL = LoginActivity.LOCALHOST_URL + "/android/login.php";
 //        private static final String LOGIN_URL = "http://192.168.1.108/android/login.php";
 
         private static final String TAG_SUCCESS = "success";

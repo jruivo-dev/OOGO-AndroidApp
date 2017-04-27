@@ -91,7 +91,7 @@ public class MySubmittedOrdersFragment extends Fragment {
         JSONParser jsonParser = new JSONParser();
 
         private ProgressDialog pDialog;
-        private static final String LOGIN_URL = "http://10.0.3.2/android/get_my_orders.php";
+        private  final String LOGIN_URL = LoginActivity.LOCALHOST_URL +"/android/get_my_orders.php";
 
 
         private static final String TAG_SUCCESS = "success";

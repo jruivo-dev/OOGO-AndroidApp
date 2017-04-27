@@ -93,7 +93,7 @@ public class PendingOrdersFragment extends Fragment {
 
         private ProgressDialog pDialog;
 
-        private static final String LOGIN_URL = "http://10.0.3.2/android/get_pending_requests.php";
+        private final String LOGIN_URL = LoginActivity.LOCALHOST_URL + "/android/get_pending_requests.php";
 //      private static final String LOGIN_URL = "http://192.168.1.108/android/get_my_orders.php";
 
         private static final String TAG_SUCCESS = "success";

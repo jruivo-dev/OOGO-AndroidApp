@@ -179,7 +179,6 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
                 new UpdateRequestOrderStatus().execute(getItem(position).getId(), LoginActivity.getUserId());
                 btnSubmitApplication.setVisibility(View.GONE);
                 btnCancel.setVisibility(View.VISIBLE);
-                PostedOrdersFragment.updateAllOrders();
 
             }
         });
@@ -287,7 +286,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
 
         JSONParser jsonParser = new JSONParser();
         private ProgressDialog pDialog;
-        private static final String LOGIN_URL = "http://10.0.3.2/android/set_request_order.php";
+        private final String LOGIN_URL = LoginActivity.LOCALHOST_URL + "/android/set_request_order.php";
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
 
@@ -350,7 +349,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
 
         JSONParser jsonParser = new JSONParser();
         private ProgressDialog pDialog;
-        private static final String LOGIN_URL = "http://10.0.3.2/android/cancel_order_application.php";
+        private final String LOGIN_URL = LoginActivity.LOCALHOST_URL + "/android/cancel_order_application.php";
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
 
