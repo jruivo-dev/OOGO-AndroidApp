@@ -151,9 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("request", "starting");
                 Log.d("PARAMS", params.toString());
 
-                JSONObject json = jsonParser.makeHttpRequest(
-                        LOGIN_URL, "POST", params);
-
+                JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "POST", params);
                 Log.d("Create Response", json.toString());
 
 

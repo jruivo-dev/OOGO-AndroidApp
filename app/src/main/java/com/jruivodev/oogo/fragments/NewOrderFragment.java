@@ -64,7 +64,7 @@ public class NewOrderFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mLocation = locationEditText.getText().toString().trim();
-                getLocationFromAddress(mLocation);
+//                getLocationFromAddress(mLocation);
             }
         });
 
