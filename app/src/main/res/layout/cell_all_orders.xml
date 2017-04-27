@@ -401,7 +401,7 @@ Descricao de tudo o meu deus ddo " />
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="2dp"
-                    android:layout_weight="0.65"
+                    android:layout_weight="0.80"
                     android:orientation="vertical">
 
                     <LinearLayout

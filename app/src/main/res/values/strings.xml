@@ -9,4 +9,5 @@
     <string name="button_edit_order">Edit Order</string>
     <string name="button_delete_order">Delete Order</string>
     <string name="button_view_users">View Users</string>
+    <string name="checkbox_display_phone">Display contact to selected User</string>
 </resources>

@@ -1,7 +1,5 @@
 package com.jruivodev.oogo.objects_and_adapters;
 
-import java.util.HashMap;
-
 /**
  * Created by Jojih on 14/04/2017.
  */
@@ -14,9 +12,6 @@ public class User {
         this.mId = mId;
         this.mName = mName;
     }
-
-    //TODO put static hasmap for order state here or in order class so it can be accessed from CELL class.
-
 
 
     public String getId() {

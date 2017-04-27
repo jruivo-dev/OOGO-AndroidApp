@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.OrderState;
 import com.jruivodev.oogo.R;
+import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.my_orders.UsersAcceptedActivity;
 
 import org.json.JSONException;
@@ -112,7 +113,7 @@ public class UserAdapter extends ArrayAdapter<User> {
 
         JSONParser jsonParser = new JSONParser();
         private ProgressDialog pDialog;
-        private static final String LOGIN_URL = "http://10.0.3.2/android/accept_user.php";
+        private final String LOGIN_URL = LoginActivity.LOCALHOST_URL + "/android/accept_user.php";
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
 
