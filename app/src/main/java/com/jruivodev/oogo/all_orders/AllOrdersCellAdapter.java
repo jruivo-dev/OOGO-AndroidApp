@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.OrderState;
@@ -80,6 +79,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             viewHolder.orderDescription = (TextView) cell.findViewById(R.id.order_description);
             viewHolder.orderPrice = (TextView) cell.findViewById(R.id.order_price);
             viewHolder.orderCategory = (TextView) cell.findViewById(R.id.order_category);
+            viewHolder.orderLocation = (TextView) cell.findViewById(R.id.unfold_order_location);
 
             viewHolder.unfoldOrderTitle = (TextView) cell.findViewById(R.id.unfold_order_title);
             viewHolder.unfoldOrderDescription = (TextView) cell.findViewById(R.id.unfold_order_description);
@@ -145,6 +145,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         viewHolder.unfoldOrderTitle.setText(item.getTitle());
         viewHolder.unfoldOrderDescription.setText(item.getDescription());
         viewHolder.unfoldOrderPrice.setText("Reward: " + item.getPrice() + "€");
+        viewHolder.orderLocation.setText("Location: " + item.getLocation());
         viewHolder.unfoldOrderCategory.setText(item.getCategory());
 
 
@@ -174,7 +175,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         btnSubmitApplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(cell.getContext(), "OrderID: " + getItem(position).getId() + "User ID:" + LoginActivity.getUserId(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(cell.getContext(), "OrderID: " + getItem(position).getId() + "User ID:" + LoginActivity.getUserId(), Toast.LENGTH_SHORT).show();
                 OrderState.setOrderState(mOrderId, mUserId, OrderState.State.PENDING.toString());
                 new UpdateRequestOrderStatus().execute(getItem(position).getId(), LoginActivity.getUserId());
                 btnSubmitApplication.setVisibility(View.GONE);
@@ -260,6 +261,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
 
     // View lookup cache
     private static class ViewHolder {
+        TextView orderLocation;
         TextView orderTitle;
         TextView orderDescription;
         TextView orderPrice;
