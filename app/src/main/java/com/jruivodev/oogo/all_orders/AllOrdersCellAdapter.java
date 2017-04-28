@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.OrderState;
 import com.jruivodev.oogo.R;
+import com.jruivodev.oogo.UserProfileActivity;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.my_orders.UsersAcceptedActivity;
 import com.jruivodev.oogo.objects_and_adapters.Order;
@@ -50,8 +51,9 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
     private String mOrderState;
     private String mUserId = LoginActivity.getUserId();
     private String mOrderId;
-    Button btnCancel;
-    Button btnSubmitApplication;
+    private Button btnCancel;
+    private Button btnSubmitApplication;
+    private ImageView profilePicture, unfoldProfilePicture;
 
     public AllOrdersCellAdapter(Context context, List<Order> orders, Boolean isEditMode) {
         super(context, 0, orders);
@@ -80,7 +82,10 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             viewHolder.orderPrice = (TextView) cell.findViewById(R.id.order_price);
             viewHolder.orderCategory = (TextView) cell.findViewById(R.id.order_category);
             viewHolder.orderLocation = (TextView) cell.findViewById(R.id.unfold_order_location);
+            profilePicture = (ImageView) cell.findViewById(R.id.profile_image);
 
+
+            unfoldProfilePicture = (ImageView) cell.findViewById(R.id.unfold_profile_image);
             viewHolder.unfoldOrderTitle = (TextView) cell.findViewById(R.id.unfold_order_title);
             viewHolder.unfoldOrderDescription = (TextView) cell.findViewById(R.id.unfold_order_description);
             viewHolder.unfoldOrderPrice = (TextView) cell.findViewById(R.id.unfold_order_price);
@@ -231,6 +236,22 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             }
         });
 
+        profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), UserProfileActivity.class);
+                getContext().startActivity(i);
+            }
+        });
+
+        unfoldProfilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), UserProfileActivity.class);
+                getContext().startActivity(i);
+            }
+        });
+
     }
 
 
@@ -273,6 +294,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
         RatingBar ratingBar;
         TextView unfoldOrderPrice;
         TextView unfoldOrderCategory;
+        ImageView profilePicture;
+        ImageView unfoldProfilePicture;
         ImageView orderStateView;
     }
 

@@ -2,6 +2,7 @@ package com.jruivodev.oogo.objects_and_adapters;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.OrderState;
 import com.jruivodev.oogo.R;
+import com.jruivodev.oogo.UserProfileActivity;
 import com.jruivodev.oogo.login_and_signup.LoginActivity;
 import com.jruivodev.oogo.my_orders.UsersAcceptedActivity;
 
@@ -25,6 +27,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Jojih on 14/04/2017.
@@ -37,6 +41,8 @@ public class UserAdapter extends ArrayAdapter<User> {
     private LinearLayout userNotChosenLayout, userChosenLayout;
     private ListView mListView;
     private Boolean isUserChosen = false;
+    private CircleImageView profilePicture;
+
 
     public UserAdapter(Context context, List<User> users, String orderId, ListView listView) {
         super(context, 0, users);
@@ -54,6 +60,7 @@ public class UserAdapter extends ArrayAdapter<User> {
 
         User currentUser = getItem(position);
         TextView userName = (TextView) listRow.findViewById(R.id.textview_user_name);
+        profilePicture = (CircleImageView) listRow.findViewById(R.id.my_order_profile_image);
         userName.setText(currentUser.getName());
         userNotChosenLayout = (LinearLayout) listRow.findViewById(R.id.user_not_chosen_layout);
         userChosenLayout = (LinearLayout) listRow.findViewById(R.id.user_chosen_layout);
@@ -102,8 +109,14 @@ public class UserAdapter extends ArrayAdapter<User> {
                 userNotChosenLayout.setVisibility(View.GONE);
 
                 ((UsersAcceptedActivity) getContext()).finish();
+            }
+        });
 
-
+        profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), UserProfileActivity.class);
+                getContext().startActivity(i);
             }
         });
     }
