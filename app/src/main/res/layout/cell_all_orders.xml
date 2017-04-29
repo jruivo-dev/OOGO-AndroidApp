@@ -22,7 +22,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:layout_marginTop="2dp"
-            android:background="@drawable/recycler_shape">
+            android:background="@drawable/shadow_cell">
             <!--android:background="#E8F5E9"-->
 
             <LinearLayout
@@ -34,9 +34,8 @@
                     android:id="@+id/unfold_order_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/primary_dark"
+                    android:layout_marginLeft="0dp"
+                    android:background="@drawable/recycler_shape"
                     android:gravity="center"
                     android:paddingBottom="5dp"
                     android:paddingLeft="3dp"
@@ -122,7 +121,6 @@
                         android:layout_alignBottom="@+id/unfold_profile_image"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:drawableLeft="@drawable/timer"
                         android:gravity="center"
                         android:text="Today: 15/04/17" />
 
@@ -172,7 +170,7 @@ Descricao de tudo o meu deus ddo " />
                             android:id="@+id/price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Reward: €"
+                            android:text="Reward: "
                             android:textSize="16sp" />
 
                         <TextView
@@ -326,7 +324,7 @@ Descricao de tudo o meu deus ddo " />
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:layout_marginTop="2dp"
-            android:background="@drawable/recycler_shape"
+            android:background="@drawable/shadow_cell"
 
             android:orientation="vertical">
             <!--android:background="#E8F5E9"-->
@@ -370,9 +368,8 @@ Descricao de tudo o meu deus ddo " />
                         android:id="@+id/order_category"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/md_green_300"
+                        android:layout_marginLeft="1dp"
+                        android:background="@drawable/recycler_shape"
                         android:gravity="center"
                         android:paddingBottom="5dp"
                         android:paddingLeft="3dp"
