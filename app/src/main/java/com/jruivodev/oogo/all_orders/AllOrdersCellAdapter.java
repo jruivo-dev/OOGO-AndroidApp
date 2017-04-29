@@ -149,8 +149,8 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
 
         viewHolder.unfoldOrderTitle.setText(item.getTitle());
         viewHolder.unfoldOrderDescription.setText(item.getDescription());
-        viewHolder.unfoldOrderPrice.setText("Reward: " + item.getPrice() + "€");
-        viewHolder.orderLocation.setText("Location: " + item.getLocation());
+        viewHolder.unfoldOrderPrice.setText(item.getPrice() + "€");
+        viewHolder.orderLocation.setText(item.getLocation());
         viewHolder.unfoldOrderCategory.setText(item.getCategory());
 
 

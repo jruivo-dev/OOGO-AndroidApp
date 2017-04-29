@@ -4,7 +4,8 @@
 
     <stroke
         android:width="3dp"
-        android:color="@color/backgroundColor" />
+        android:color="@color/md_green_300"
+        />
 
     <padding
         android:bottom="1dp"
