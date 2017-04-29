@@ -41,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     public static String PREF_USERNAME = "username";
     public static String PREF_PASSWORD = "password";
 
-    public static String LOCALHOST_URL = "http://10.0.3.2";
-    //    public static String LOCALHOST_URL = "http://192.168.1.108";
+    //    public static String LOCALHOST_URL = "http://10.0.3.2";
+    public static String LOCALHOST_URL = "http://192.168.1.108";
     private static String USER_NAME = "";
 
     public static String getUserId() {

@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.jruivodev.oogo.EnlargedPictureActivity;
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.OrderState;
 import com.jruivodev.oogo.R;
@@ -53,7 +54,7 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
     private String mOrderId;
     private Button btnCancel;
     private Button btnSubmitApplication;
-    private ImageView profilePicture, unfoldProfilePicture;
+    private ImageView profilePicture, unfoldProfilePicture, image1, image2, image3;
 
     public AllOrdersCellAdapter(Context context, List<Order> orders, Boolean isEditMode) {
         super(context, 0, orders);
@@ -100,6 +101,10 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
 
             btnCancel = (Button) cell.findViewById(R.id.button_cancel_application);
             btnSubmitApplication = (Button) cell.findViewById(R.id.button_submit_application);
+
+            image1 = (ImageView) cell.findViewById(R.id.order_picture_1);
+            image2 = (ImageView) cell.findViewById(R.id.order_picture_2);
+            image3 = (ImageView) cell.findViewById(R.id.order_picture_3);
 
 
             cell.setTag(viewHolder);
@@ -248,6 +253,38 @@ public class AllOrdersCellAdapter extends ArrayAdapter<Order> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), UserProfileActivity.class);
+                getContext().startActivity(i);
+            }
+        });
+
+
+        image1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), EnlargedPictureActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("image", R.drawable.order_image_1); //Your id
+                i.putExtras(b);
+                getContext().startActivity(i);
+            }
+        });
+        image2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), EnlargedPictureActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("image", R.drawable.order_image_2); //Your id
+                i.putExtras(b);
+                getContext().startActivity(i);
+            }
+        });
+        image3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), EnlargedPictureActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("image", R.drawable.order_image_3); //Your id
+                i.putExtras(b);
                 getContext().startActivity(i);
             }
         });

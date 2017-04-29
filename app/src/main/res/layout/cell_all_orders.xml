@@ -18,7 +18,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="450dp"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:layout_marginTop="2dp"
@@ -211,6 +211,48 @@ Descricao de tudo o meu deus ddo " />
                             android:layout_below="@id/location"
                             android:text="Pictures:"
                             android:textSize="16sp" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/unfold_order_pictures"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:id="@+id/order_picture_1"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginRight="8dp"
+                                android:adjustViewBounds="true"
+                                android:background="@color/md_green_200"
+                                android:scaleType="centerCrop"
+
+                                android:src="@drawable/order_image_1" />
+
+                            <ImageView
+                                android:id="@+id/order_picture_2"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginRight="8dp"
+                                android:adjustViewBounds="true"
+                                android:background="@color/md_green_200"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/order_image_2" />
+
+                            <ImageView
+                                android:id="@+id/order_picture_3"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:adjustViewBounds="true"
+                                android:background="@color/md_green_200"
+                                android:scaleType="centerCrop"
+
+                                android:src="@drawable/order_image_3" />
+                        </LinearLayout>
+
+
                     </RelativeLayout>
 
 
@@ -225,6 +267,7 @@ Descricao de tudo o meu deus ddo " />
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_below="@id/order_picture_1"
                 android:visibility="visible">
 
                 <Button
