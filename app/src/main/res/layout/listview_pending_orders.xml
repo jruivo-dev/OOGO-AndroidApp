@@ -10,6 +10,7 @@
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
         android:layout_marginTop="8dp"
+        android:background="@color/md_green_50"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp" />
 </com.yalantis.phoenix.PullToRefreshView>
