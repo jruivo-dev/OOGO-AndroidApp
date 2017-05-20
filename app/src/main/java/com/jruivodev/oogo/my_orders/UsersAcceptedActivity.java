@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.RatingBar;
 
 import com.jruivodev.oogo.JSONParser;
 import com.jruivodev.oogo.OrderState;
@@ -35,7 +35,6 @@ public class UsersAcceptedActivity extends AppCompatActivity {
     private String mOrderId, mUserId;
     private ArrayList<User> users = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +43,19 @@ public class UsersAcceptedActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         mOrderId = b.getString("orderId");
 
-        Toast.makeText(this, "orderid: " + mOrderId, Toast.LENGTH_SHORT).show();
-
+//        Toast.makeText(this, "orderid: " + mOrderId, Toast.LENGTH_SHORT).show();
 
         listView = (ListView) findViewById(R.id.listview_accepted_users);
         mAdapter = new UserAdapter(this, new ArrayList<User>(), mOrderId, listView);
+
+
+
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.rating_bar);
+        // Paints the rating stars color
+//        Drawable progress = ratingBar.getProgressDrawable();
+//        DrawableCompat.setTint(progress, ContextCompat.getColor(this, R.color.colorPrimary));
+
+
 
         Button acceptBtn = (Button) findViewById(R.id.button_accept_user);
         if (acceptBtn != null)
@@ -75,7 +82,7 @@ public class UsersAcceptedActivity extends AppCompatActivity {
     private class GetMyOrderUsers extends AsyncTask<String, String, JSONObject> {
         JSONParser jsonParser = new JSONParser();
         private ProgressDialog pDialog;
-        private  final String LOGIN_URL = LoginActivity.LOCALHOST_URL + "/android/get_my_order_users.php";
+        private final String LOGIN_URL = LoginActivity.LOCALHOST_URL + "/android/get_my_order_users.php";
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
 

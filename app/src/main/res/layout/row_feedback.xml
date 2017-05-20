@@ -19,7 +19,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/profile2"
+            android:src="@drawable/unknown_profile"
             app:civ_border_color="#FF000000"
             app:civ_border_width="1dp" />
 
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:text="User Test1"
+                android:text="Dummy User"
                 android:textSize="16sp" />
 
             <RatingBar

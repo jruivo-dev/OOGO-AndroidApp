@@ -64,13 +64,15 @@ public class MainAllOrdersPosted extends Fragment {
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
 
         @Override
         public Fragment getItem(int position) {
             if (position == 0)
                 return new PostedOrdersFragment();
+            if (position == 1)
+                return new ProfessionalOrdersFragment();
             else
                 return new PendingOrdersFragment();
         }

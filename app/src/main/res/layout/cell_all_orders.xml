@@ -63,7 +63,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="18dp"
-                        android:src="@drawable/profile2"
+                        android:src="@drawable/unknown_profile"
 
                         app:civ_border_color="#FF000000"
                         app:civ_border_width="1dp" />
@@ -399,7 +399,7 @@ Descricao de tudo o meu deus ddo " />
                         android:layout_height="60dp"
                         android:layout_above="@+id/order_user_name"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/profile2"
+                        android:src="@drawable/unknown_profile"
                         app:civ_border_color="#FF000000"
                         app:civ_border_width="1dp" />
 

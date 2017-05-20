@@ -9,28 +9,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="casual"
-            android:gravity="center_horizontal"
-            android:text="OOGO"
-            android:textColor="@color/textColor"
-            android:textSize="80dp"
-            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-30dp"
-            android:gravity="center"
-            android:text="- Order on the Go - "
-            android:textColor="@color/textColor" />
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:src="@drawable/oogo_logo" />
+        <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="casual"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:text="OOGO"-->
+        <!--android:textColor="@color/textColor"-->
+        <!--android:textSize="80dp"-->
+        <!--android:textStyle="bold" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="-30dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="- Order on the Go - "-->
+        <!--android:textColor="@color/textColor" />-->
 
     </LinearLayout>
 
@@ -51,7 +57,6 @@
             android:drawablePadding="2dp"
             android:gravity="left"
             android:hint="Email"
-            android:maxLength="12"
             android:padding="12dp"
             android:textColor="@color/textColor"
             android:textColorHint="@color/textColor"

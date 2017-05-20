@@ -8,6 +8,7 @@
 
     <string-array name="array_all_orders">
         <item>Available Orders</item>
+        <item>Professionals</item>
         <item>Pending Orders</item>
     </string-array>
 
