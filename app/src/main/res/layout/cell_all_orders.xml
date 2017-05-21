@@ -229,7 +229,7 @@ Descricao de tudo o meu deus ddo " />
                                 android:background="@color/md_green_200"
                                 android:scaleType="centerCrop"
 
-                                android:src="@drawable/order_image_1" />
+                                android:src="@drawable/big_tasty" />
 
                             <ImageView
                                 android:id="@+id/order_picture_2"
@@ -239,7 +239,7 @@ Descricao de tudo o meu deus ddo " />
                                 android:adjustViewBounds="true"
                                 android:background="@color/md_green_200"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/order_image_2" />
+                                android:src="@drawable/big_tasty" />
 
                             <ImageView
                                 android:id="@+id/order_picture_3"
@@ -249,7 +249,7 @@ Descricao de tudo o meu deus ddo " />
                                 android:background="@color/md_green_200"
                                 android:scaleType="centerCrop"
 
-                                android:src="@drawable/order_image_3" />
+                                android:src="@drawable/big_tasty" />
                         </LinearLayout>
 
 

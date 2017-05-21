@@ -1,5 +1,6 @@
 package com.jruivodev.oogo;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -33,10 +34,10 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
 
 
-        ratings.add(new Rating("Johny", "Title1", "Ddescriptin hello thanks goodbye my friends; love you all"));
-        ratings.add(new Rating("Ana", "Title2", "Ddescriptin hello thanks goodbye my friends; love you all"));
-        ratings.add(new Rating("Marg", "Title3", "Ddescriptin hello thanks goodbye my friends; love you all"));
-        ratings.add(new Rating("Peter", "Title4", "Ddescriptin hello thanks goodbye my friends; love you all"));
+        ratings.add(new Rating("Helga", "Excelente", "5 Estrelas, Recomendo"));
+        ratings.add(new Rating("Rute", "Prestavel", "Impecavel, gostei bastante!"));
+        ratings.add(new Rating("Margarida", "Brutal", "Este gajo e' super bacano!!"));
+        ratings.add(new Rating("Pedro", "Like!", "Bue simpatico e bastante meigo com o meu cao"));
 
 
         listView = (ListView) findViewById(R.id.rating_list_view);
@@ -56,6 +57,16 @@ public class UserProfileActivity extends AppCompatActivity {
 //                new acceptUser.execute(mUserId, mOrderId);
                 }
             });
+
+
+        Button feedbackBtn = (Button) findViewById(R.id.button_write_review);
+        feedbackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(UserProfileActivity.this, WriteReviewActivity.class);
+                startActivity(i);
+            }
+        });
 
         Button btn = (Button) findViewById(R.id.button_go_back_profile);
         btn.setOnClickListener(new View.OnClickListener() {

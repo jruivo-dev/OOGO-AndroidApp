@@ -18,21 +18,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--<activity-->
+            <!--android:name=".login_and_signup.Splash"-->
+            <!--android:label="Splash Screen"-->
+            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
         <activity
-            android:name=".login_and_signup.Splash"
-            android:label="Splash Screen"
+            android:name=".login_and_signup.LoginActivity"
+            android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".login_and_signup.LoginActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         </activity>
         <activity
             android:name=".login_and_signup.SignupTypeActivity"
@@ -65,6 +71,12 @@
 
         <activity
             android:name=".UserProfileActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+        <activity
+            android:name=".WriteReviewActivity"
             android:label="@string/app_name">
 
         </activity>

@@ -122,7 +122,7 @@ public class OrdersLocationFragment extends Fragment implements OnMapReadyCallba
 //        Toast.makeText(getContext(), locations.size(), Toast.LENGTH_LONG).show();
         LatLng iscte = new LatLng(38.747841, -9.153443);
 
-        mMap.addMarker(new MarkerOptions().position(iscte).title("Aqui estuda-se"));
+//        mMap.addMarker(new MarkerOptions().position(iscte).title("Aqui estuda-se"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(iscte, 9.5f));
 
 

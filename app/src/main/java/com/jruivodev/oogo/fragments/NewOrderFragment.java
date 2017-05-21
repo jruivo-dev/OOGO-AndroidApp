@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.jruivodev.oogo.Category;
@@ -113,8 +112,8 @@ public class NewOrderFragment extends Fragment {
             Address location = address.get(0);
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-            Toast.makeText(getContext(), location.getAddressLine(0) + "", Toast.LENGTH_LONG).show();
-            Toast.makeText(getContext(), latLng + "", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(), location.getAddressLine(0) + "", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(), latLng + "", Toast.LENGTH_LONG).show();
 //            //Put marker on map on that LatLng
 //            Marker srchMarker = mMap.addMarker(new MarkerOptions().position(latLng).title("Destination").icon(BitmapDescriptorFactory.fromResource(R.drawable.bb)));
 //
@@ -138,7 +137,7 @@ public class NewOrderFragment extends Fragment {
 
             //Lets take first possibility from the all possibilities.
             location = address.get(0);
-            Toast.makeText(getContext(), location.getAddressLine(0) + "", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(), location.getAddressLine(0) + "", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -208,8 +207,8 @@ public class NewOrderFragment extends Fragment {
             }
 
             if (json != null) {
-                Toast.makeText(getActivity(), json.toString(),
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), json.toString(),
+//                        Toast.LENGTH_LONG).show();
                 try {
                     success = json.getInt(TAG_SUCCESS);
                     message = json.getString(TAG_MESSAGE);
